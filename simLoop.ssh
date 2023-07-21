@@ -1,0 +1,109 @@
+#!/bin/bash
+
+## Clear Screen
+clear
+
+export DAMASK_NUM_THREADS=10
+
+echo "for which increment you want to process the results"
+echo "Enter the first increment"
+read firstInc
+
+echo "Enter the last increment"
+read lastInc
+
+echo "what should be the step size"
+read stepInc
+
+for DIR in *; do
+
+(
+
+cd "$DIR" &&
+
+for geomFileName in *.geom; do
+    geom1=$(basename -- "$geomFileName")
+    geomFile="${geom1%.*}"
+done
+
+for loadFileName in *.load; do
+    load1=$(basename -- "$loadFileName")
+    loadFile="${load1%.*}"
+done
+
+echo "##############################################################"
+echo "$geomFile.geom and $loadFile.load picked for Simulations"
+echo "The simulation will be using $DAMASK_NUM_THREADS Processors"
+echo "##############################################################"
+
+###################################################
+### RUNNING DAMASK SIMULATION ###
+###################################################
+
+DAMASK_spectral -l "$loadFile".load -g "$geomFile".geom
+
+###################################################
+### GLOBAL RESULTS FILE ###
+###################################################
+
+## This is where average global results from .spectralOut file are computed and written into a globalResults file ##
+postResults --cr f,p "$geomFile"_"$loadFile".spectralOut
+
+## writing Cauchy Stress values to the globalResults ##
+addCauchy ./postProc/"$geomFile"_"$loadFile".txt
+
+## writing Strain values to the globalResults ##
+addStrainTensors -0 -v ./postProc/"$geomFile"_"$loadFile".txt
+
+## writing Mises STRESS and STRAIN values from calculated stresses and strains into the globalResults ##
+addMises -s Cauchy ./postProc/"$geomFile"_"$loadFile".txt
+addMises -e 'ln(V)' ./postProc/"$geomFile"_"$loadFile".txt
+
+## adding STRESS in MPa, STRAIN in % and Total Transforamtion Fraction in % to the globalResults ##
+addCalculation --label Mises_stress_MPa --formula '#Mises(Cauchy)#/(1e6)' ./postProc/"$geomFile"_"$loadFile".txt
+addCalculation --label Mises_strain_percent --formula '#Mises(ln(V))#*100' ./postProc/"$geomFile"_"$loadFile".txt
+
+## making a copy of globalResults and writing only the suitable data to the coppied file for the user ##
+cp ./postProc/"$geomFile"_"$loadFile".txt ./postProc/"$geomFile"_"$loadFile"_clean.txt
+
+filterTable -w inc,Mises_stress_MPa,Mises_strain_percent ./postProc/"$geomFile"_"$loadFile"_clean.txt
+
+###################################################
+### LOCAL RESULTS FILE ###
+###################################################
+
+## this is where local results from .spectralOut file are computed and written into localResults files ##
+postResults --cr f,p,phase,texture,volume,orientation,eulerangles,grainrotation,fe,fp,ee,lp --separation x,y,z --split --range "$firstInc" "$lastInc" "$stepInc" --increments "$geomFile"_"$loadFile".spectralOut
+
+Inc=$firstInc
+
+## executing a while loop to process all the output visualization files ##
+while [ $Inc -le $lastInc ]; do
+
+echo '### Writing results of Increment ' $Inc ' ###' 
+
+addCauchy ./postProc/"$geomFile"_"$loadFile"_inc"$Inc".txt
+addStrainTensors -0 -v ./postProc/"$geomFile"_"$loadFile"_inc"$Inc".txt
+
+addMises -e 'ln(V)' ./postProc/"$geomFile"_"$loadFile"_inc"$Inc".txt
+addMises -s Cauchy ./postProc/"$geomFile"_"$loadFile"_inc"$Inc".txt
+
+vtk_rectilinearGrid ./postProc/"$geomFile"_"$loadFile"_inc"$Inc".txt
+
+vtk_addRectilinearGridData --inplace -d elem,node,ip,grain,phase,texture,1_orientation,2_orientation,3_orientation,4_orientation,1_eulerangles,2_eulerangles,3_eulerangles,1_grainrotation,2_grainrotation,3_grainrotation,4_grainrotation,1_Cauchy,2_Cauchy,3_Cauchy,4_Cauchy,5_Cauchy,6_Cauchy,7_Cauchy,8_Cauchy,9_Cauchy,'1_ln(V)','2_ln(V)','3_ln(V)','4_ln(V)','5_ln(V)','6_ln(V)','7_ln(V)','8_ln(V)','9_ln(V)','Mises(Cauchy)','Mises(ln(V))' --vtk ./postProc/"$geomFile"_"$loadFile"_inc"$Inc"_pos\(cell\).vtr ./postProc/"$geomFile"_"$loadFile"_inc"$Inc".txt
+
+addDisplacement --nodal ./postProc/"$geomFile"_"$loadFile"_inc"$Inc".txt
+
+vtk_addRectilinearGridData -d --inplace 'fluct(f).pos','avg(f).pos' ./postProc/"$geomFile"_"$loadFile"_inc"$Inc"_nodal.txt --vtk ./postProc/"$geomFile"_"$loadFile"_inc"$Inc"_pos\(cell\).vtr
+
+Inc=$(expr $Inc + $stepInc)
+
+done
+
+)
+
+done
+
+echo "##################"
+echo "All Done :D ENJOY"
+echo "##################"
