@@ -1,0 +1,20 @@
+       3  sudo apt-get update
+    4  sudo apt-get upgrade
+   38  sudo apt-get install gfortran
+   41  sudo apt-get install cxx
+   43  tar -xf petsc-3.9.3.tar.gz 
+   45  cd petsc-3.9.3/
+   47  ./configure --with-fc=gfortran --with-cc=gcc --with-cxx=c++ --download-openmpi --download-fftw --download-hdf5 --download-fblaslapack --download-chaco --download-exodusii --download-hypre=https://github.com/hypre-space/hypre/archive/refs/tags/v2.14.0.tar.gz --download-cmake --download-metis --download-ml --download-mumps --download-netcdf --download-parmetis --download-scalapack --download-suitesparse --download-superlu --download-superlu_dist --download-triangle --download-fblaslapack --download-zlib --download-pnetcdf --download-valgrind-devel --with-c2html=0 --with-debugging=0 --with-ssl=0 --with-x=0 COPTFLAGS="-O3 -xHost -no-prec-div" CXXOPTFLAGS="-O3 -xHost -no-prec-div" FOPTFLAGS="-O3 -xHost -no-prec-div"
+   59  make PETSC_DIR=/home/abaqus/Softwares/petsc-3.9.3 PETSC_ARCH=arch-linux2-c-opt all
+   60  make PETSC_DIR=/home/abaqus/Softwares/petsc-3.9.3 PETSC_ARCH=arch-linux2-c-opt check
+
+   63  tar -xf DAMASK-2.0.2.tar.xz 
+   65  cd DAMASK/
+   66  export  PETSC_DIR=/home/abaqus/Softwares/petsc-3.9.3 PETSC_ARCH=arch-linux2-c-opt
+   67  source DAMASK_env.sh 
+   71  sudo apt-get install python-numpy
+   75  sudo apt-get install cmake
+   76  make spectral
+   77  make processing
+   78  DAMASK_spectral 
+
