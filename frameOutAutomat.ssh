@@ -1,0 +1,106 @@
+#!/bin/bash
+
+## Version 2.0.0
+
+## Clear Screen
+clear
+
+export DAMASK_NUM_THREADS=8
+
+for geomFileName in *.geom; do
+    geom1=$(basename -- "$geomFileName")
+    geomFile="${geom1%.*}"
+done
+
+for loadFileName in *.load; do
+    load1=$(basename -- "$loadFileName")
+    loadFile="${load1%.*}"
+done
+
+echo "##############################################################"
+echo "$geomFile.geom and $loadFile.load picked for Simulations"
+echo "The simulation will be using $DAMASK_NUM_THREADS Processors"
+echo "##############################################################"
+
+echo "for which increment you want to process the results"
+echo "Enter the first increment"
+read firstInc
+
+echo "Enter the last increment"
+read lastInc
+
+echo "what should be the step size"
+read stepInc
+
+###################################################
+### LOCAL RESULTS FILE ###
+###################################################
+
+## this is where local results from .spectralOut file are computed and written into localResults files ##
+postResults --cr f,p,phase,texture,volume,orientation,eulerangles,grainrotation,fe,fp,ee,lp --ho damage --co edge_density,dipole_density,shear_rate_slip,accumulated_shear_slip,mfp_slip,resolved_stress_slip,threshold_stress_slip,twin_fraction,shear_rate_twin,accumulated_shear_twin,mfp_twin,resolved_stress_twin,threshold_stress_twin,shear_rate_shearband,strain_trans_fraction,total_trans_fraction --separation x,y,z --split --range "$firstInc" "$lastInc" "$stepInc" --increments "$geomFile"_"$loadFile".spectralOut
+
+addDisplacement --nodal ./postProc/"$geomFile"_"$loadFile"_inc"$Inc".txt
+
+Inc=$firstInc
+
+## executing a while loop to process all the output visualization files ##
+while [ $Inc -le $lastInc ]; do
+
+echo '### Writing results of Increment ' $Inc ' ###' 
+
+## writing Cauchy Stress values to the globalResults ##
+addCauchy ./postProc/"$geomFile"_"$loadFile"_inc"$Inc".txt
+
+## writing Strain values to the globalResults ##
+addStrainTensors -0 -v ./postProc/"$geomFile"_"$loadFile"_inc"$Inc".txt
+
+## writing Mises STRESS and STRAIN values from calculated stresses and strains into the globalResults ##
+addMises -s Cauchy ./postProc/"$geomFile"_"$loadFile"_inc"$Inc".txt
+
+addMises -e 'ln(V)' ./postProc/"$geomFile"_"$loadFile"_inc"$Inc".txt
+
+## adding STRESS in MPa, STRAIN in % and Total Transforamtion Fraction in % to the globalResults ##
+addCalculation --label Mises_stress_MPa --formula '#Mises(Cauchy)#/(1e6)' ./postProc/"$geomFile"_"$loadFile"_inc"$Inc".txt
+
+addCalculation --label Mises_strain_percent --formula '#Mises(ln(V))#*100' ./postProc/"$geomFile"_"$loadFile"_inc"$Inc".txt
+
+addCalculation --label sum_of_all_trans_fraction --formula '#1_total_trans_fraction#+#2_total_trans_fraction#+#3_total_trans_fraction#+#4_total_trans_fraction#+#5_total_trans_fraction#+#6_total_trans_fraction#+#7_total_trans_fraction#+#8_total_trans_fraction#+#9_total_trans_fraction#+#10_total_trans_fraction#+#11_total_trans_fraction#+#12_total_trans_fraction#' ./postProc/"$geomFile"_"$loadFile"_inc"$Inc".txt
+
+addCalculation --label percent_of_all_trans_fraction --formula '#sum_of_all_trans_fraction#*100' ./postProc/"$geomFile"_"$loadFile"_inc"$Inc".txt
+
+addCalculation --label sum_of_all_twin_fraction --formula '#1_twin_fraction#+#2_twin_fraction#+#3_twin_fraction#+#4_twin_fraction#+#5_twin_fraction#+#6_twin_fraction#+#7_twin_fraction#+#8_twin_fraction#+#9_twin_fraction#+#10_twin_fraction#+#11_twin_fraction#+#12_twin_fraction#' ./postProc/"$geomFile"_"$loadFile"_inc"$Inc".txt
+
+addCalculation --label percent_of_all_twin_fraction --formula '#sum_of_all_twin_fraction#*100' ./postProc/"$geomFile"_"$loadFile"_inc"$Inc".txt
+
+addCalculation --label total_dipole_density --formula '#1_dipole_density#+#2_dipole_density#+#3_dipole_density#+#4_dipole_density#+#5_dipole_density#+#6_dipole_density#+#7_dipole_density#+#8_dipole_density#+#9_dipole_density#+#10_dipole_density#+#11_dipole_density#+#12_dipole_density#' ./postProc/"$geomFile"_"$loadFile"_inc"$Inc".txt
+
+addCalculation --label total_edge_density --formula '#1_edge_density#+#2_edge_density#+#3_edge_density#+#4_edge_density#+#5_edge_density#+#6_edge_density#+#7_edge_density#+#8_edge_density#+#9_edge_density#+#10_edge_density#+#11_edge_density#+#12_edge_density#' ./postProc/"$geomFile"_"$loadFile"_inc"$Inc".txt
+
+addCalculation --label total_dislocation_density --formula '#total_dipole_density#+#total_edge_density#' ./postProc/"$geomFile"_"$loadFile"_inc"$Inc".txt
+
+addCalculation --label Mises_stress_MPa --formula '#Mises(Cauchy)#/(1e6)' ./postProc/"$geomFile"_"$loadFile"_inc"$Inc".txt
+
+addCalculation --label Mises_strain_percent --formula '#Mises(ln(V))#*100' ./postProc/"$geomFile"_"$loadFile"_inc"$Inc".txt
+
+addCalculation --label percent_of_all_trans_fraction --formula '#sum_of_all_trans_fraction#*100' ./postProc/"$geomFile"_"$loadFile"_inc"$Inc".txt
+
+addCalculation --label percent_of_all_twin_fraction --formula '#sum_of_all_twin_fraction#*100' ./postProc/"$geomFile"_"$loadFile"_inc"$Inc".txt
+
+addCalculation --label sum_of_all_strain_trans_fraction --formula '#1_strain_trans_fraction#+#2_strain_trans_fraction#+#3_strain_trans_fraction#+#4_strain_trans_fraction#+#5_strain_trans_fraction#+#6_strain_trans_fraction#+#7_strain_trans_fraction#+#8_strain_trans_fraction#+#9_strain_trans_fraction#+#10_strain_trans_fraction#+#11_strain_trans_fraction#+#12_strain_trans_fraction#' ./postProc/"$geomFile"_"$loadFile"_inc"$Inc".txt
+
+addCalculation --label sum_of_all_accumulated_shear_slip --formula '#1_accumulated_shear_slip#+#2_accumulated_shear_slip#+#3_accumulated_shear_slip#+#4_accumulated_shear_slip#+#5_accumulated_shear_slip#+#6_accumulated_shear_slip#+#7_accumulated_shear_slip#+#8_accumulated_shear_slip#+#9_accumulated_shear_slip#+#10_accumulated_shear_slip#+#11_accumulated_shear_slip#+#12_accumulated_shear_slip#' ./postProc/"$geomFile"_"$loadFile"_inc"$Inc".txt
+
+addCalculation --label sum_of_all_accumulated_shear_twin --formula '#1_accumulated_shear_twin#+#2_accumulated_shear_twin#+#3_accumulated_shear_twin#+#4_accumulated_shear_twin#+#5_accumulated_shear_twin#+#6_accumulated_shear_twin#+#7_accumulated_shear_twin#+#8_accumulated_shear_twin#+#9_accumulated_shear_twin#+#10_accumulated_shear_twin#+#11_accumulated_shear_twin#+#12_accumulated_shear_twin#' ./postProc/"$geomFile"_"$loadFile"_inc"$Inc".txt
+
+vtk_rectilinearGrid ./postProc/"$geomFile"_"$loadFile"_inc"$Inc".txt
+
+vtk_addRectilinearGridData --inplace -d elem,node,ip,grain,phase,texture,1_eulerangles,2_eulerangles,3_eulerangles,damage,'Mises_stress_MPa','Mises_strain_percent','percent_of_all_trans_fraction','percent_of_all_twin_fraction','total_edge_density','total_dipole_density','total_dislocation_density','sum_of_all_strain_trans_fraction','sum_of_all_accumulated_shear_slip','sum_of_all_accumulated_shear_twin' --vtk ./postProc/"$geomFile"_"$loadFile"_inc"$Inc"_pos\(cell\).vtr ./postProc/"$geomFile"_"$loadFile"_inc"$Inc".txt
+
+vtk_addRectilinearGridData -d 'fluct(f).pos','avg(f).pos' ./postProc/"$geomFile"_"$loadFile"_inc"$Inc"_nodal.txt --vtk ./postProc/"$geomFile"_"$loadFile"_inc"$Inc"_pos\(cell\).vtr
+
+Inc=$(expr $Inc + $stepInc)
+
+done
+echo "##################"
+echo "All Done :D ENJOY"
+echo "##################"

@@ -1,0 +1,75 @@
+#!/bin/bash
+
+## Version 2.0.0
+
+## Clear Screen
+clear
+
+export DAMASK_NUM_THREADS=12
+
+for geomFileName in *.geom; do
+    geom1=$(basename -- "$geomFileName")
+    geomFile="${geom1%.*}"
+done
+
+for loadFileName in *.load; do
+    load1=$(basename -- "$loadFileName")
+    loadFile="${load1%.*}"
+done
+
+###################################################
+### RUNNING DAMASK SIMULATION ###
+###################################################
+
+DAMASK_spectral -l "$loadFile".load -g "$geomFile".geom
+
+###################################################
+### GLOBAL RESULTS FILE ###
+###################################################
+
+## This is where average global results from .spectralOut file are computed and written into a globalResults file ##
+postResults --cr f,p --co  total_trans_fraction,twin_fraction,accumulated_shear_slip --ho damage "$geomFile"_"$loadFile".spectralOut
+
+## writing Cauchy Stress values to the globalResults ##
+addCauchy ./postProc/"$geomFile"_"$loadFile".txt
+
+## writing Strain values to the globalResults ##
+addStrainTensors -0 -v ./postProc/"$geomFile"_"$loadFile".txt
+
+## writing Engg Strain values to the globalResults ##
+addStrainTensors -2 -v ./postProc/"$geomFile"_"$loadFile".txt
+
+## writing Mises STRESS and STRAIN values from calculated stresses and strains into the globalResults ##
+addMises -s p ./postProc/"$geomFile"_"$loadFile".txt
+addMises -s Cauchy ./postProc/"$geomFile"_"$loadFile".txt
+addMises -e 'ln(V)' ./postProc/"$geomFile"_"$loadFile".txt
+addMises -e 'Green(V)' ./postProc/"$geomFile"_"$loadFile".txt
+
+## adding STRESS in MPa, STRAIN in % and Total Transforamtion Fraction in % to the globalResults ##
+addCalculation --label Mises_stress_MPa --formula '#Mises(Cauchy)#/(1e6)' ./postProc/"$geomFile"_"$loadFile".txt
+addCalculation --label Mises_strain_percent --formula '#Mises(ln(V))#*100' ./postProc/"$geomFile"_"$loadFile".txt
+addCalculation --label Engg_Stress_MPa --formula '#Mises(p)#/(1e6)' ./postProc/"$geomFile"_"$loadFile".txt
+addCalculation --label Engg_Strain_percent --formula '#Mises(Green(V))#*100' ./postProc/"$geomFile"_"$loadFile".txt
+
+## adding STRESS in MPa, STRAIN in % and Total Transforamtion Fraction in % to the globalResults ##
+addCalculation --label Mises_stress_MPa --formula '#Mises(Cauchy)#/(1e6)' ./postProc/"$geomFile"_"$loadFile".txt
+addCalculation --label Mises_strain_percent --formula '#Mises(ln(V))#*100' ./postProc/"$geomFile"_"$loadFile".txt
+
+addCalculation --label sum_of_all_trans_fraction --formula '#1_total_trans_fraction#+#2_total_trans_fraction#+#3_total_trans_fraction#+#4_total_trans_fraction#+#5_total_trans_fraction#+#6_total_trans_fraction#+#7_total_trans_fraction#+#8_total_trans_fraction#+#9_total_trans_fraction#+#10_total_trans_fraction#+#11_total_trans_fraction#+#12_total_trans_fraction#' ./postProc/"$geomFile"_"$loadFile".txt
+
+addCalculation --label percent_of_all_trans_fraction --formula '#sum_of_all_trans_fraction#*100' ./postProc/"$geomFile"_"$loadFile".txt
+
+addCalculation --label sum_of_all_twin_fraction --formula '#1_twin_fraction#+#2_twin_fraction#+#3_twin_fraction#+#4_twin_fraction#+#5_twin_fraction#+#6_twin_fraction#+#7_twin_fraction#+#8_twin_fraction#+#9_twin_fraction#+#10_twin_fraction#+#11_twin_fraction#+#12_twin_fraction#' ./postProc/"$geomFile"_"$loadFile".txt
+
+addCalculation --label percent_of_all_twin_fraction --formula '#sum_of_all_twin_fraction#*100' ./postProc/"$geomFile"_"$loadFile".txt
+
+addCalculation --label sum_of_all_accumulated_shear_slip --formula '#1_accumulated_shear_slip#+#2_accumulated_shear_slip#+#3_accumulated_shear_slip#+#4_accumulated_shear_slip#+#5_accumulated_shear_slip#+#6_accumulated_shear_slip#+#7_accumulated_shear_slip#+#8_accumulated_shear_slip#+#9_accumulated_shear_slip#+#10_accumulated_shear_slip#+#11_accumulated_shear_slip#+#12_accumulated_shear_slip#' ./postProc/"$geomFile"_"$loadFile".txt
+
+## making a copy of globalResults and writing only the suitable data to the coppied file for the user ##
+cp ./postProc/"$geomFile"_"$loadFile".txt ./postProc/"$geomFile"_"$loadFile"_clean.txt
+filterTable -w inc,Mises_stress_MPa,Mises_strain_percent,Engg_Stress_MPa,Engg_Strain_percent,damage,percent_of_all_trans_fraction,percent_of_all_twin_fraction,sum_of_all_accumulated_shear_slip ./postProc/"$geomFile"_"$loadFile"_clean.txt
+
+
+echo "##################"
+echo "All Done :D ENJOY"
+echo "##################"
