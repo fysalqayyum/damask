@@ -2,7 +2,7 @@
 
 ## You should have Ubuntu 20.04.6 LTS version installed before starting
 
-## The petsc for installation is available at: https://drive.google.com/drive/folders/1Ma9DSO99X-NtWBiE07E26XH8vp5HTA48?usp=sharing  
+## The petsc for installation files are available at: https://drive.google.com/drive/folders/1Ma9DSO99X-NtWBiE07E26XH8vp5HTA48?usp=sharing  
 
 ## Download the DAMASK2.0.2.tar and PETSc.tat files to the Softwares folder  
 
