@@ -60,7 +60,7 @@ DAMASK_spectral
 
 nano ~/.bashrc
 
-# at the end of this file type by carefully cekcing for your own directories and addresses
+## At the end of this file type by carefully checking for your own directories and addresses
 
 export PETSC_DIR=/home/(your own link to the petsec installation directory)/petsc-3.9.3 PETSC_ARCH=arch-linux2-c-opt
 source ~/Software/DAAMSK/DAMASH_env.sh
