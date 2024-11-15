@@ -64,6 +64,6 @@ nano ~/.bashrc
 
 export PETSC_DIR=/home/(your own link to the petsec installation directory)/petsc-3.9.3 PETSC_ARCH=arch-linux2-c-opt
 
-source ~/Software/DAAMSK/DAMASH_env.sh
+source ~/Software/DAMASK/DAMASK_env.sh
 
 source make ~/Software/DAMASK/processing
