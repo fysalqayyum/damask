@@ -67,3 +67,15 @@ export PETSC_DIR=/home/(your own link to the petsec installation directory)/pets
 source ~/Software/DAMASK/DAMASK_env.sh
 
 source make ~/Software/DAMASK/processing
+
+# Install further Dependncies for posr processing
+
+sudo apt-get install curl
+
+curl https://bootstrap.pypa.io/pip/2.7/get-pip.py --output get-pip.py
+
+sudo python2 get-pip.py
+
+pip install vtk
+
+pip install scipy
