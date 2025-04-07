@@ -1,0 +1,3090 @@
+#-------------------#
+<homogenization>
+#-------------------#
+
+[SX]
+type	none
+
+#-------------------#
+<crystallite>
+#-------------------#
+[almostAll]
+(output) phase
+(output) texture
+(output) volume
+(output) orientation    # quaternion
+(output) eulerangles    # orientation as Bunge triple
+(output) grainrotation  # deviation from initial orientation as axis (1-3) and angle in degree (4)
+(output) f              # deformation gradient tensor; synonyms: "defgrad"
+#(output) fe             # elastic deformation gradient tensor
+#(output) fp             # plastic deformation gradient tensor
+#(output) e              # total strain as Green-Lagrange tensor 
+#(output) ee             # elastic strain as Green-Lagrange tensor 
+(output) p              # first Piola-Kichhoff stress tensor; synonyms: "firstpiola", "1stpiola"
+#(output) lp             # plastic velocity gradient tensor
+
+#-------------------#
+<phase>
+#-------------------#
+[Nb_phenopowerlaw for 1300 degree]
+elasticity              hooke
+plasticity              phenopowerlaw
+
+#(output)                resistance_slip
+#(output)                shearrate_slip
+#(output)                resolvedstress_slip
+#(output)                totalshear
+#(output)                resistance_twin
+#(output)                shearrate_twin
+#(output)                resolvedstress_twin
+#(output)                totalvolfrac
+
+lattice_structure       fcc
+Nslip                   12   # per family
+Ntwin                    0   # per family
+
+c11                     90.4e9
+c12                     44.5e9
+c44                     22.9e9
+
+gdot0_slip              0.001
+n_slip                  20
+tau0_slip                 31e6 # per family
+tausat_slip               63e6 # per family
+a_slip                  2.25
+h0_slipslip             75e6
+interaction_slipslip    1 1 1.4 1.4 1.4 1.4
+atol_resistance         1
+
+<texture>
+[grain1]
+(gauss) phi1 92.162   Phi 85.667    phi2 303.320   scatter 0.0   fraction 1.0 
+[grain2]
+(gauss) phi1 12.913   Phi 146.607    phi2 104.097   scatter 0.0   fraction 1.0 
+[grain3]
+(gauss) phi1 158.265   Phi 141.621    phi2 238.930   scatter 0.0   fraction 1.0 
+[grain4]
+(gauss) phi1 65.388   Phi 120.510    phi2 354.913   scatter 0.0   fraction 1.0 
+[grain5]
+(gauss) phi1 323.967   Phi 31.738    phi2 119.194   scatter 0.0   fraction 1.0 
+[grain6]
+(gauss) phi1 101.006   Phi 96.110    phi2 31.691   scatter 0.0   fraction 1.0 
+[grain7]
+(gauss) phi1 56.817   Phi 87.756    phi2 358.762   scatter 0.0   fraction 1.0 
+[grain8]
+(gauss) phi1 157.393   Phi 58.081    phi2 233.624   scatter 0.0   fraction 1.0 
+[grain9]
+(gauss) phi1 179.432   Phi 54.612    phi2 51.193   scatter 0.0   fraction 1.0 
+[grain10]
+(gauss) phi1 202.749   Phi 51.605    phi2 62.315   scatter 0.0   fraction 1.0 
+[grain11]
+(gauss) phi1 208.460   Phi 92.637    phi2 309.408   scatter 0.0   fraction 1.0 
+[grain12]
+(gauss) phi1 226.416   Phi 72.781    phi2 141.338   scatter 0.0   fraction 1.0 
+[grain13]
+(gauss) phi1 352.700   Phi 156.100    phi2 171.651   scatter 0.0   fraction 1.0 
+[grain14]
+(gauss) phi1 268.834   Phi 97.862    phi2 244.371   scatter 0.0   fraction 1.0 
+[grain15]
+(gauss) phi1 126.012   Phi 31.736    phi2 144.328   scatter 0.0   fraction 1.0 
+[grain16]
+(gauss) phi1 340.176   Phi 74.579    phi2 164.006   scatter 0.0   fraction 1.0 
+[grain17]
+(gauss) phi1 39.617   Phi 126.853    phi2 319.538   scatter 0.0   fraction 1.0 
+[grain18]
+(gauss) phi1 90.718   Phi 70.400    phi2 85.117   scatter 0.0   fraction 1.0 
+[grain19]
+(gauss) phi1 8.991   Phi 85.180    phi2 224.545   scatter 0.0   fraction 1.0 
+[grain20]
+(gauss) phi1 219.382   Phi 139.901    phi2 42.828   scatter 0.0   fraction 1.0 
+[grain21]
+(gauss) phi1 106.175   Phi 15.905    phi2 298.742   scatter 0.0   fraction 1.0 
+[grain22]
+(gauss) phi1 191.015   Phi 30.315    phi2 261.843   scatter 0.0   fraction 1.0 
+[grain23]
+(gauss) phi1 274.214   Phi 140.847    phi2 101.013   scatter 0.0   fraction 1.0 
+[grain24]
+(gauss) phi1 38.695   Phi 142.097    phi2 145.470   scatter 0.0   fraction 1.0 
+[grain25]
+(gauss) phi1 93.532   Phi 88.499    phi2 265.141   scatter 0.0   fraction 1.0 
+[grain26]
+(gauss) phi1 261.040   Phi 70.826    phi2 65.228   scatter 0.0   fraction 1.0 
+[grain27]
+(gauss) phi1 0.937   Phi 38.939    phi2 178.179   scatter 0.0   fraction 1.0 
+[grain28]
+(gauss) phi1 357.778   Phi 125.208    phi2 341.121   scatter 0.0   fraction 1.0 
+[grain29]
+(gauss) phi1 287.843   Phi 95.530    phi2 37.571   scatter 0.0   fraction 1.0 
+[grain30]
+(gauss) phi1 191.015   Phi 30.315    phi2 261.843   scatter 0.0   fraction 1.0 
+[grain31]
+(gauss) phi1 282.342   Phi 65.634    phi2 177.184   scatter 0.0   fraction 1.0 
+[grain32]
+(gauss) phi1 280.011   Phi 68.113    phi2 240.205   scatter 0.0   fraction 1.0 
+[grain33]
+(gauss) phi1 12.748   Phi 63.700    phi2 22.747   scatter 0.0   fraction 1.0 
+[grain34]
+(gauss) phi1 115.830   Phi 83.705    phi2 10.194   scatter 0.0   fraction 1.0 
+[grain35]
+(gauss) phi1 113.242   Phi 142.833    phi2 302.815   scatter 0.0   fraction 1.0 
+[grain36]
+(gauss) phi1 175.728   Phi 137.924    phi2 116.802   scatter 0.0   fraction 1.0 
+[grain37]
+(gauss) phi1 134.294   Phi 132.631    phi2 134.843   scatter 0.0   fraction 1.0 
+[grain38]
+(gauss) phi1 88.309   Phi 90.881    phi2 301.809   scatter 0.0   fraction 1.0 
+[grain39]
+(gauss) phi1 154.149   Phi 92.646    phi2 57.007   scatter 0.0   fraction 1.0 
+[grain40]
+(gauss) phi1 111.294   Phi 163.554    phi2 42.696   scatter 0.0   fraction 1.0 
+[grain41]
+(gauss) phi1 215.645   Phi 109.103    phi2 128.908   scatter 0.0   fraction 1.0 
+[grain42]
+(gauss) phi1 191.015   Phi 30.315    phi2 261.843   scatter 0.0   fraction 1.0 
+[grain43]
+(gauss) phi1 211.507   Phi 12.341    phi2 333.236   scatter 0.0   fraction 1.0 
+[grain44]
+(gauss) phi1 57.855   Phi 128.028    phi2 91.925   scatter 0.0   fraction 1.0 
+[grain45]
+(gauss) phi1 262.530   Phi 91.635    phi2 89.372   scatter 0.0   fraction 1.0 
+[grain46]
+(gauss) phi1 191.683   Phi 115.878    phi2 250.853   scatter 0.0   fraction 1.0 
+[grain47]
+(gauss) phi1 180.809   Phi 73.275    phi2 211.891   scatter 0.0   fraction 1.0 
+[grain48]
+(gauss) phi1 287.329   Phi 91.861    phi2 127.167   scatter 0.0   fraction 1.0 
+[grain49]
+(gauss) phi1 133.142   Phi 19.359    phi2 87.777   scatter 0.0   fraction 1.0 
+[grain50]
+(gauss) phi1 312.271   Phi 42.585    phi2 291.767   scatter 0.0   fraction 1.0 
+[grain51]
+(gauss) phi1 178.605   Phi 79.569    phi2 278.000   scatter 0.0   fraction 1.0 
+[grain52]
+(gauss) phi1 134.308   Phi 93.649    phi2 166.598   scatter 0.0   fraction 1.0 
+[grain53]
+(gauss) phi1 60.767   Phi 90.545    phi2 34.840   scatter 0.0   fraction 1.0 
+[grain54]
+(gauss) phi1 249.517   Phi 67.530    phi2 129.523   scatter 0.0   fraction 1.0 
+[grain55]
+(gauss) phi1 1.739   Phi 16.443    phi2 209.973   scatter 0.0   fraction 1.0 
+[grain56]
+(gauss) phi1 236.071   Phi 32.259    phi2 249.893   scatter 0.0   fraction 1.0 
+[grain57]
+(gauss) phi1 122.093   Phi 81.753    phi2 358.396   scatter 0.0   fraction 1.0 
+[grain58]
+(gauss) phi1 132.560   Phi 134.626    phi2 87.133   scatter 0.0   fraction 1.0 
+[grain59]
+(gauss) phi1 93.829   Phi 90.064    phi2 339.697   scatter 0.0   fraction 1.0 
+[grain60]
+(gauss) phi1 177.213   Phi 62.425    phi2 275.633   scatter 0.0   fraction 1.0 
+[grain61]
+(gauss) phi1 1.827   Phi 62.602    phi2 182.226   scatter 0.0   fraction 1.0 
+[grain62]
+(gauss) phi1 287.355   Phi 61.785    phi2 185.982   scatter 0.0   fraction 1.0 
+[grain63]
+(gauss) phi1 72.094   Phi 83.953    phi2 278.366   scatter 0.0   fraction 1.0 
+[grain64]
+(gauss) phi1 21.564   Phi 124.194    phi2 19.379   scatter 0.0   fraction 1.0 
+[grain65]
+(gauss) phi1 277.878   Phi 104.835    phi2 141.421   scatter 0.0   fraction 1.0 
+[grain66]
+(gauss) phi1 348.212   Phi 123.129    phi2 276.978   scatter 0.0   fraction 1.0 
+[grain67]
+(gauss) phi1 208.366   Phi 129.476    phi2 30.971   scatter 0.0   fraction 1.0 
+[grain68]
+(gauss) phi1 122.351   Phi 30.018    phi2 325.651   scatter 0.0   fraction 1.0 
+[grain69]
+(gauss) phi1 67.985   Phi 106.772    phi2 235.423   scatter 0.0   fraction 1.0 
+[grain70]
+(gauss) phi1 169.979   Phi 9.121    phi2 25.155   scatter 0.0   fraction 1.0 
+[grain71]
+(gauss) phi1 187.119   Phi 132.745    phi2 30.973   scatter 0.0   fraction 1.0 
+[grain72]
+(gauss) phi1 267.923   Phi 83.646    phi2 202.087   scatter 0.0   fraction 1.0 
+[grain73]
+(gauss) phi1 130.467   Phi 82.136    phi2 189.904   scatter 0.0   fraction 1.0 
+[grain74]
+(gauss) phi1 162.807   Phi 78.221    phi2 353.629   scatter 0.0   fraction 1.0 
+[grain75]
+(gauss) phi1 188.898   Phi 125.224    phi2 256.062   scatter 0.0   fraction 1.0 
+[grain76]
+(gauss) phi1 117.440   Phi 91.179    phi2 346.978   scatter 0.0   fraction 1.0 
+[grain77]
+(gauss) phi1 242.360   Phi 118.374    phi2 175.202   scatter 0.0   fraction 1.0 
+[grain78]
+(gauss) phi1 260.591   Phi 108.598    phi2 96.111   scatter 0.0   fraction 1.0 
+[grain79]
+(gauss) phi1 260.919   Phi 93.874    phi2 35.453   scatter 0.0   fraction 1.0 
+[grain80]
+(gauss) phi1 249.519   Phi 37.497    phi2 14.439   scatter 0.0   fraction 1.0 
+[grain81]
+(gauss) phi1 45.551   Phi 97.999    phi2 3.197   scatter 0.0   fraction 1.0 
+[grain82]
+(gauss) phi1 251.287   Phi 54.436    phi2 6.666   scatter 0.0   fraction 1.0 
+[grain83]
+(gauss) phi1 233.515   Phi 9.647    phi2 279.637   scatter 0.0   fraction 1.0 
+[grain84]
+(gauss) phi1 313.426   Phi 156.128    phi2 45.810   scatter 0.0   fraction 1.0 
+[grain85]
+(gauss) phi1 11.736   Phi 8.949    phi2 146.091   scatter 0.0   fraction 1.0 
+[grain86]
+(gauss) phi1 22.497   Phi 13.743    phi2 204.796   scatter 0.0   fraction 1.0 
+[grain87]
+(gauss) phi1 194.991   Phi 107.218    phi2 2.491   scatter 0.0   fraction 1.0 
+[grain88]
+(gauss) phi1 302.197   Phi 132.599    phi2 281.674   scatter 0.0   fraction 1.0 
+[grain89]
+(gauss) phi1 16.439   Phi 101.181    phi2 354.697   scatter 0.0   fraction 1.0 
+[grain90]
+(gauss) phi1 88.836   Phi 29.873    phi2 251.812   scatter 0.0   fraction 1.0 
+[grain91]
+(gauss) phi1 19.224   Phi 34.092    phi2 180.911   scatter 0.0   fraction 1.0 
+[grain92]
+(gauss) phi1 38.695   Phi 142.097    phi2 145.470   scatter 0.0   fraction 1.0 
+[grain93]
+(gauss) phi1 347.101   Phi 68.244    phi2 42.545   scatter 0.0   fraction 1.0 
+[grain94]
+(gauss) phi1 62.152   Phi 72.397    phi2 95.301   scatter 0.0   fraction 1.0 
+[grain95]
+(gauss) phi1 165.122   Phi 85.801    phi2 170.316   scatter 0.0   fraction 1.0 
+[grain96]
+(gauss) phi1 256.597   Phi 123.189    phi2 58.848   scatter 0.0   fraction 1.0 
+[grain97]
+(gauss) phi1 32.120   Phi 13.532    phi2 236.009   scatter 0.0   fraction 1.0 
+[grain98]
+(gauss) phi1 132.293   Phi 99.582    phi2 183.575   scatter 0.0   fraction 1.0 
+[grain99]
+(gauss) phi1 50.378   Phi 7.207    phi2 37.082   scatter 0.0   fraction 1.0 
+[grain100]
+(gauss) phi1 281.175   Phi 78.498    phi2 156.366   scatter 0.0   fraction 1.0 
+[grain101]
+(gauss) phi1 0.937   Phi 38.939    phi2 178.179   scatter 0.0   fraction 1.0 
+[grain102]
+(gauss) phi1 302.273   Phi 78.271    phi2 58.761   scatter 0.0   fraction 1.0 
+[grain103]
+(gauss) phi1 170.364   Phi 102.723    phi2 43.304   scatter 0.0   fraction 1.0 
+[grain104]
+(gauss) phi1 10.186   Phi 160.276    phi2 301.403   scatter 0.0   fraction 1.0 
+[grain105]
+(gauss) phi1 152.846   Phi 85.094    phi2 36.140   scatter 0.0   fraction 1.0 
+[grain106]
+(gauss) phi1 197.604   Phi 104.083    phi2 172.100   scatter 0.0   fraction 1.0 
+[grain107]
+(gauss) phi1 356.014   Phi 13.920    phi2 177.135   scatter 0.0   fraction 1.0 
+[grain108]
+(gauss) phi1 106.175   Phi 15.905    phi2 298.742   scatter 0.0   fraction 1.0 
+[grain109]
+(gauss) phi1 96.559   Phi 97.505    phi2 321.965   scatter 0.0   fraction 1.0 
+[grain110]
+(gauss) phi1 198.497   Phi 77.475    phi2 184.318   scatter 0.0   fraction 1.0 
+[grain111]
+(gauss) phi1 227.573   Phi 173.478    phi2 358.332   scatter 0.0   fraction 1.0 
+[grain112]
+(gauss) phi1 101.980   Phi 29.139    phi2 268.450   scatter 0.0   fraction 1.0 
+[grain113]
+(gauss) phi1 171.575   Phi 27.727    phi2 235.948   scatter 0.0   fraction 1.0 
+[grain114]
+(gauss) phi1 162.807   Phi 78.221    phi2 353.629   scatter 0.0   fraction 1.0 
+[grain115]
+(gauss) phi1 23.058   Phi 93.952    phi2 358.928   scatter 0.0   fraction 1.0 
+[grain116]
+(gauss) phi1 31.222   Phi 58.848    phi2 253.682   scatter 0.0   fraction 1.0 
+[grain117]
+(gauss) phi1 165.317   Phi 151.813    phi2 234.680   scatter 0.0   fraction 1.0 
+[grain118]
+(gauss) phi1 100.991   Phi 149.798    phi2 202.222   scatter 0.0   fraction 1.0 
+[grain119]
+(gauss) phi1 44.700   Phi 47.470    phi2 152.975   scatter 0.0   fraction 1.0 
+[grain120]
+(gauss) phi1 150.071   Phi 147.482    phi2 107.316   scatter 0.0   fraction 1.0 
+[grain121]
+(gauss) phi1 277.247   Phi 129.582    phi2 18.027   scatter 0.0   fraction 1.0 
+[grain122]
+(gauss) phi1 356.387   Phi 125.267    phi2 347.023   scatter 0.0   fraction 1.0 
+[grain123]
+(gauss) phi1 83.990   Phi 51.970    phi2 128.012   scatter 0.0   fraction 1.0 
+[grain124]
+(gauss) phi1 208.460   Phi 92.637    phi2 309.408   scatter 0.0   fraction 1.0 
+[grain125]
+(gauss) phi1 89.682   Phi 137.123    phi2 97.964   scatter 0.0   fraction 1.0 
+[grain126]
+(gauss) phi1 39.085   Phi 82.957    phi2 125.638   scatter 0.0   fraction 1.0 
+[grain127]
+(gauss) phi1 289.341   Phi 29.430    phi2 251.299   scatter 0.0   fraction 1.0 
+[grain128]
+(gauss) phi1 299.074   Phi 113.989    phi2 302.400   scatter 0.0   fraction 1.0 
+[grain129]
+(gauss) phi1 181.023   Phi 13.810    phi2 83.468   scatter 0.0   fraction 1.0 
+[grain130]
+(gauss) phi1 347.638   Phi 95.220    phi2 171.096   scatter 0.0   fraction 1.0 
+[grain131]
+(gauss) phi1 48.597   Phi 37.775    phi2 188.672   scatter 0.0   fraction 1.0 
+[grain132]
+(gauss) phi1 152.507   Phi 28.130    phi2 312.734   scatter 0.0   fraction 1.0 
+[grain133]
+(gauss) phi1 51.748   Phi 45.120    phi2 59.533   scatter 0.0   fraction 1.0 
+[grain134]
+(gauss) phi1 23.849   Phi 46.287    phi2 264.205   scatter 0.0   fraction 1.0 
+[grain135]
+(gauss) phi1 257.208   Phi 50.119    phi2 257.925   scatter 0.0   fraction 1.0 
+[grain136]
+(gauss) phi1 67.185   Phi 84.307    phi2 125.795   scatter 0.0   fraction 1.0 
+[grain137]
+(gauss) phi1 159.286   Phi 137.101    phi2 42.444   scatter 0.0   fraction 1.0 
+[grain138]
+(gauss) phi1 70.943   Phi 135.972    phi2 249.736   scatter 0.0   fraction 1.0 
+[grain139]
+(gauss) phi1 12.767   Phi 122.854    phi2 9.166   scatter 0.0   fraction 1.0 
+[grain140]
+(gauss) phi1 259.497   Phi 136.145    phi2 2.822   scatter 0.0   fraction 1.0 
+[grain141]
+(gauss) phi1 52.231   Phi 32.740    phi2 100.738   scatter 0.0   fraction 1.0 
+[grain142]
+(gauss) phi1 98.114   Phi 122.116    phi2 295.726   scatter 0.0   fraction 1.0 
+[grain143]
+(gauss) phi1 102.926   Phi 145.202    phi2 326.716   scatter 0.0   fraction 1.0 
+[grain144]
+(gauss) phi1 359.673   Phi 103.687    phi2 165.669   scatter 0.0   fraction 1.0 
+[grain145]
+(gauss) phi1 200.309   Phi 104.964    phi2 227.348   scatter 0.0   fraction 1.0 
+[grain146]
+(gauss) phi1 222.262   Phi 85.439    phi2 257.779   scatter 0.0   fraction 1.0 
+[grain147]
+(gauss) phi1 176.646   Phi 98.966    phi2 91.623   scatter 0.0   fraction 1.0 
+[grain148]
+(gauss) phi1 227.483   Phi 78.117    phi2 83.674   scatter 0.0   fraction 1.0 
+[grain149]
+(gauss) phi1 274.517   Phi 8.980    phi2 182.111   scatter 0.0   fraction 1.0 
+[grain150]
+(gauss) phi1 93.483   Phi 100.439    phi2 293.134   scatter 0.0   fraction 1.0 
+[grain151]
+(gauss) phi1 259.497   Phi 136.145    phi2 2.822   scatter 0.0   fraction 1.0 
+[grain152]
+(gauss) phi1 280.884   Phi 18.209    phi2 164.467   scatter 0.0   fraction 1.0 
+[grain153]
+(gauss) phi1 142.691   Phi 147.400    phi2 71.571   scatter 0.0   fraction 1.0 
+[grain154]
+(gauss) phi1 237.630   Phi 6.004    phi2 157.338   scatter 0.0   fraction 1.0 
+[grain155]
+(gauss) phi1 176.261   Phi 85.932    phi2 6.429   scatter 0.0   fraction 1.0 
+[grain156]
+(gauss) phi1 140.535   Phi 155.636    phi2 41.910   scatter 0.0   fraction 1.0 
+[grain157]
+(gauss) phi1 139.462   Phi 157.633    phi2 233.363   scatter 0.0   fraction 1.0 
+[grain158]
+(gauss) phi1 131.015   Phi 117.883    phi2 107.787   scatter 0.0   fraction 1.0 
+[grain159]
+(gauss) phi1 194.856   Phi 99.534    phi2 82.407   scatter 0.0   fraction 1.0 
+[grain160]
+(gauss) phi1 93.054   Phi 147.607    phi2 101.715   scatter 0.0   fraction 1.0 
+[grain161]
+(gauss) phi1 272.121   Phi 89.220    phi2 66.408   scatter 0.0   fraction 1.0 
+[grain162]
+(gauss) phi1 185.332   Phi 131.814    phi2 216.560   scatter 0.0   fraction 1.0 
+[grain163]
+(gauss) phi1 128.927   Phi 38.166    phi2 110.225   scatter 0.0   fraction 1.0 
+[grain164]
+(gauss) phi1 242.744   Phi 4.252    phi2 212.897   scatter 0.0   fraction 1.0 
+[grain165]
+(gauss) phi1 22.820   Phi 167.764    phi2 101.734   scatter 0.0   fraction 1.0 
+[grain166]
+(gauss) phi1 78.100   Phi 57.284    phi2 17.930   scatter 0.0   fraction 1.0 
+[grain167]
+(gauss) phi1 350.106   Phi 95.332    phi2 89.642   scatter 0.0   fraction 1.0 
+[grain168]
+(gauss) phi1 73.836   Phi 71.137    phi2 132.930   scatter 0.0   fraction 1.0 
+[grain169]
+(gauss) phi1 0.937   Phi 38.939    phi2 178.179   scatter 0.0   fraction 1.0 
+[grain170]
+(gauss) phi1 325.493   Phi 8.405    phi2 33.556   scatter 0.0   fraction 1.0 
+[grain171]
+(gauss) phi1 173.873   Phi 58.524    phi2 211.847   scatter 0.0   fraction 1.0 
+[grain172]
+(gauss) phi1 346.253   Phi 76.944    phi2 342.733   scatter 0.0   fraction 1.0 
+[grain173]
+(gauss) phi1 113.327   Phi 67.961    phi2 53.409   scatter 0.0   fraction 1.0 
+[grain174]
+(gauss) phi1 17.402   Phi 102.133    phi2 165.921   scatter 0.0   fraction 1.0 
+[grain175]
+(gauss) phi1 104.892   Phi 94.123    phi2 292.529   scatter 0.0   fraction 1.0 
+[grain176]
+(gauss) phi1 284.010   Phi 32.658    phi2 86.230   scatter 0.0   fraction 1.0 
+[grain177]
+(gauss) phi1 121.988   Phi 139.859    phi2 49.363   scatter 0.0   fraction 1.0 
+[grain178]
+(gauss) phi1 33.088   Phi 171.845    phi2 26.565   scatter 0.0   fraction 1.0 
+[grain179]
+(gauss) phi1 187.119   Phi 132.745    phi2 30.973   scatter 0.0   fraction 1.0 
+[grain180]
+(gauss) phi1 338.665   Phi 111.757    phi2 342.983   scatter 0.0   fraction 1.0 
+[grain181]
+(gauss) phi1 280.814   Phi 111.893    phi2 245.208   scatter 0.0   fraction 1.0 
+[grain182]
+(gauss) phi1 50.035   Phi 80.495    phi2 113.030   scatter 0.0   fraction 1.0 
+[grain183]
+(gauss) phi1 327.338   Phi 63.230    phi2 191.495   scatter 0.0   fraction 1.0 
+[grain184]
+(gauss) phi1 38.924   Phi 103.200    phi2 27.070   scatter 0.0   fraction 1.0 
+[grain185]
+(gauss) phi1 76.445   Phi 34.798    phi2 287.639   scatter 0.0   fraction 1.0 
+[grain186]
+(gauss) phi1 357.218   Phi 114.006    phi2 135.411   scatter 0.0   fraction 1.0 
+[grain187]
+(gauss) phi1 247.192   Phi 108.589    phi2 341.544   scatter 0.0   fraction 1.0 
+[grain188]
+(gauss) phi1 335.088   Phi 106.464    phi2 48.429   scatter 0.0   fraction 1.0 
+[grain189]
+(gauss) phi1 182.081   Phi 65.704    phi2 311.250   scatter 0.0   fraction 1.0 
+[grain190]
+(gauss) phi1 195.023   Phi 79.745    phi2 65.344   scatter 0.0   fraction 1.0 
+[grain191]
+(gauss) phi1 192.610   Phi 89.172    phi2 278.683   scatter 0.0   fraction 1.0 
+[grain192]
+(gauss) phi1 190.092   Phi 103.810    phi2 264.917   scatter 0.0   fraction 1.0 
+[grain193]
+(gauss) phi1 286.312   Phi 57.648    phi2 71.844   scatter 0.0   fraction 1.0 
+[grain194]
+(gauss) phi1 229.307   Phi 76.813    phi2 221.847   scatter 0.0   fraction 1.0 
+[grain195]
+(gauss) phi1 293.132   Phi 127.729    phi2 138.702   scatter 0.0   fraction 1.0 
+[grain196]
+(gauss) phi1 113.153   Phi 88.877    phi2 124.451   scatter 0.0   fraction 1.0 
+[grain197]
+(gauss) phi1 79.239   Phi 103.716    phi2 244.583   scatter 0.0   fraction 1.0 
+[grain198]
+(gauss) phi1 257.177   Phi 127.425    phi2 101.384   scatter 0.0   fraction 1.0 
+[grain199]
+(gauss) phi1 279.527   Phi 83.437    phi2 337.385   scatter 0.0   fraction 1.0 
+[grain200]
+(gauss) phi1 51.625   Phi 157.239    phi2 139.099   scatter 0.0   fraction 1.0 
+[grain201]
+(gauss) phi1 177.380   Phi 142.153    phi2 357.541   scatter 0.0   fraction 1.0 
+[grain202]
+(gauss) phi1 201.723   Phi 100.608    phi2 188.566   scatter 0.0   fraction 1.0 
+[grain203]
+(gauss) phi1 213.761   Phi 113.872    phi2 122.341   scatter 0.0   fraction 1.0 
+[grain204]
+(gauss) phi1 350.089   Phi 113.381    phi2 62.065   scatter 0.0   fraction 1.0 
+[grain205]
+(gauss) phi1 277.878   Phi 104.835    phi2 141.421   scatter 0.0   fraction 1.0 
+[grain206]
+(gauss) phi1 287.355   Phi 61.785    phi2 185.982   scatter 0.0   fraction 1.0 
+[grain207]
+(gauss) phi1 353.607   Phi 124.864    phi2 141.524   scatter 0.0   fraction 1.0 
+[grain208]
+(gauss) phi1 14.292   Phi 137.244    phi2 112.299   scatter 0.0   fraction 1.0 
+[grain209]
+(gauss) phi1 243.179   Phi 133.757    phi2 134.343   scatter 0.0   fraction 1.0 
+[grain210]
+(gauss) phi1 211.347   Phi 40.959    phi2 77.559   scatter 0.0   fraction 1.0 
+[grain211]
+(gauss) phi1 102.847   Phi 48.355    phi2 267.500   scatter 0.0   fraction 1.0 
+[grain212]
+(gauss) phi1 286.754   Phi 131.705    phi2 304.594   scatter 0.0   fraction 1.0 
+[grain213]
+(gauss) phi1 124.515   Phi 53.072    phi2 234.512   scatter 0.0   fraction 1.0 
+[grain214]
+(gauss) phi1 356.179   Phi 119.482    phi2 43.235   scatter 0.0   fraction 1.0 
+[grain215]
+(gauss) phi1 11.475   Phi 98.948    phi2 16.850   scatter 0.0   fraction 1.0 
+[grain216]
+(gauss) phi1 98.462   Phi 72.043    phi2 348.524   scatter 0.0   fraction 1.0 
+[grain217]
+(gauss) phi1 4.712   Phi 54.547    phi2 18.286   scatter 0.0   fraction 1.0 
+[grain218]
+(gauss) phi1 256.242   Phi 88.921    phi2 317.288   scatter 0.0   fraction 1.0 
+[grain219]
+(gauss) phi1 72.419   Phi 102.936    phi2 171.862   scatter 0.0   fraction 1.0 
+[grain220]
+(gauss) phi1 326.027   Phi 147.206    phi2 248.211   scatter 0.0   fraction 1.0 
+[grain221]
+(gauss) phi1 11.352   Phi 69.418    phi2 204.082   scatter 0.0   fraction 1.0 
+[grain222]
+(gauss) phi1 45.301   Phi 31.421    phi2 195.994   scatter 0.0   fraction 1.0 
+[grain223]
+(gauss) phi1 90.212   Phi 91.829    phi2 208.960   scatter 0.0   fraction 1.0 
+[grain224]
+(gauss) phi1 192.061   Phi 13.695    phi2 95.000   scatter 0.0   fraction 1.0 
+[grain225]
+(gauss) phi1 144.253   Phi 152.360    phi2 358.836   scatter 0.0   fraction 1.0 
+[grain226]
+(gauss) phi1 326.164   Phi 138.668    phi2 359.298   scatter 0.0   fraction 1.0 
+[grain227]
+(gauss) phi1 263.909   Phi 79.608    phi2 117.369   scatter 0.0   fraction 1.0 
+[grain228]
+(gauss) phi1 324.285   Phi 129.290    phi2 67.914   scatter 0.0   fraction 1.0 
+[grain229]
+(gauss) phi1 108.654   Phi 93.854    phi2 172.815   scatter 0.0   fraction 1.0 
+[grain230]
+(gauss) phi1 90.406   Phi 96.866    phi2 249.469   scatter 0.0   fraction 1.0 
+[grain231]
+(gauss) phi1 310.953   Phi 76.587    phi2 358.422   scatter 0.0   fraction 1.0 
+[grain232]
+(gauss) phi1 275.708   Phi 87.157    phi2 268.887   scatter 0.0   fraction 1.0 
+[grain233]
+(gauss) phi1 282.184   Phi 81.622    phi2 210.293   scatter 0.0   fraction 1.0 
+[grain234]
+(gauss) phi1 257.052   Phi 125.018    phi2 264.875   scatter 0.0   fraction 1.0 
+[grain235]
+(gauss) phi1 282.071   Phi 91.809    phi2 191.575   scatter 0.0   fraction 1.0 
+[grain236]
+(gauss) phi1 5.128   Phi 132.473    phi2 319.837   scatter 0.0   fraction 1.0 
+[grain237]
+(gauss) phi1 122.254   Phi 96.714    phi2 274.944   scatter 0.0   fraction 1.0 
+[grain238]
+(gauss) phi1 325.829   Phi 26.358    phi2 28.515   scatter 0.0   fraction 1.0 
+[grain239]
+(gauss) phi1 183.764   Phi 60.714    phi2 186.817   scatter 0.0   fraction 1.0 
+[grain240]
+(gauss) phi1 305.262   Phi 33.615    phi2 305.511   scatter 0.0   fraction 1.0 
+[grain241]
+(gauss) phi1 262.294   Phi 100.558    phi2 291.166   scatter 0.0   fraction 1.0 
+[grain242]
+(gauss) phi1 101.690   Phi 22.726    phi2 268.645   scatter 0.0   fraction 1.0 
+[grain243]
+(gauss) phi1 12.548   Phi 109.183    phi2 178.366   scatter 0.0   fraction 1.0 
+[grain244]
+(gauss) phi1 275.708   Phi 87.157    phi2 268.887   scatter 0.0   fraction 1.0 
+[grain245]
+(gauss) phi1 30.292   Phi 32.224    phi2 292.330   scatter 0.0   fraction 1.0 
+[grain246]
+(gauss) phi1 263.092   Phi 81.066    phi2 18.157   scatter 0.0   fraction 1.0 
+[grain247]
+(gauss) phi1 189.429   Phi 114.515    phi2 48.388   scatter 0.0   fraction 1.0 
+[grain248]
+(gauss) phi1 200.667   Phi 14.552    phi2 203.687   scatter 0.0   fraction 1.0 
+[grain249]
+(gauss) phi1 353.850   Phi 70.382    phi2 188.493   scatter 0.0   fraction 1.0 
+[grain250]
+(gauss) phi1 213.743   Phi 94.836    phi2 351.764   scatter 0.0   fraction 1.0 
+[grain251]
+(gauss) phi1 340.059   Phi 129.553    phi2 187.767   scatter 0.0   fraction 1.0 
+[grain252]
+(gauss) phi1 84.977   Phi 109.634    phi2 16.832   scatter 0.0   fraction 1.0 
+[grain253]
+(gauss) phi1 267.233   Phi 124.415    phi2 73.286   scatter 0.0   fraction 1.0 
+[grain254]
+(gauss) phi1 0.937   Phi 38.939    phi2 178.179   scatter 0.0   fraction 1.0 
+[grain255]
+(gauss) phi1 283.017   Phi 128.610    phi2 114.649   scatter 0.0   fraction 1.0 
+[grain256]
+(gauss) phi1 194.132   Phi 101.576    phi2 103.208   scatter 0.0   fraction 1.0 
+[grain257]
+(gauss) phi1 170.368   Phi 104.370    phi2 70.136   scatter 0.0   fraction 1.0 
+[grain258]
+(gauss) phi1 349.065   Phi 151.164    phi2 198.651   scatter 0.0   fraction 1.0 
+[grain259]
+(gauss) phi1 13.779   Phi 89.986    phi2 221.259   scatter 0.0   fraction 1.0 
+[grain260]
+(gauss) phi1 48.504   Phi 67.435    phi2 69.829   scatter 0.0   fraction 1.0 
+[grain261]
+(gauss) phi1 300.896   Phi 140.777    phi2 113.135   scatter 0.0   fraction 1.0 
+[grain262]
+(gauss) phi1 217.075   Phi 87.218    phi2 137.347   scatter 0.0   fraction 1.0 
+[grain263]
+(gauss) phi1 142.665   Phi 75.865    phi2 66.360   scatter 0.0   fraction 1.0 
+[grain264]
+(gauss) phi1 252.496   Phi 111.321    phi2 179.099   scatter 0.0   fraction 1.0 
+[grain265]
+(gauss) phi1 89.404   Phi 98.967    phi2 3.160   scatter 0.0   fraction 1.0 
+[grain266]
+(gauss) phi1 184.048   Phi 130.018    phi2 274.308   scatter 0.0   fraction 1.0 
+[grain267]
+(gauss) phi1 170.497   Phi 78.187    phi2 80.897   scatter 0.0   fraction 1.0 
+[grain268]
+(gauss) phi1 182.728   Phi 20.633    phi2 0.005   scatter 0.0   fraction 1.0 
+[grain269]
+(gauss) phi1 256.619   Phi 53.126    phi2 113.013   scatter 0.0   fraction 1.0 
+[grain270]
+(gauss) phi1 340.134   Phi 71.549    phi2 14.489   scatter 0.0   fraction 1.0 
+[grain271]
+(gauss) phi1 184.695   Phi 147.922    phi2 267.472   scatter 0.0   fraction 1.0 
+[grain272]
+(gauss) phi1 268.663   Phi 57.237    phi2 160.178   scatter 0.0   fraction 1.0 
+[grain273]
+(gauss) phi1 19.297   Phi 99.538    phi2 184.546   scatter 0.0   fraction 1.0 
+[grain274]
+(gauss) phi1 73.019   Phi 25.314    phi2 124.079   scatter 0.0   fraction 1.0 
+[grain275]
+(gauss) phi1 82.088   Phi 102.485    phi2 163.055   scatter 0.0   fraction 1.0 
+[grain276]
+(gauss) phi1 100.958   Phi 86.215    phi2 202.589   scatter 0.0   fraction 1.0 
+[grain277]
+(gauss) phi1 99.804   Phi 102.012    phi2 354.821   scatter 0.0   fraction 1.0 
+[grain278]
+(gauss) phi1 81.608   Phi 113.575    phi2 292.071   scatter 0.0   fraction 1.0 
+[grain279]
+(gauss) phi1 262.737   Phi 76.456    phi2 287.600   scatter 0.0   fraction 1.0 
+[grain280]
+(gauss) phi1 260.341   Phi 110.380    phi2 70.800   scatter 0.0   fraction 1.0 
+[grain281]
+(gauss) phi1 226.924   Phi 49.181    phi2 188.726   scatter 0.0   fraction 1.0 
+[grain282]
+(gauss) phi1 62.837   Phi 77.473    phi2 0.824   scatter 0.0   fraction 1.0 
+[grain283]
+(gauss) phi1 308.067   Phi 86.337    phi2 161.874   scatter 0.0   fraction 1.0 
+[grain284]
+(gauss) phi1 104.172   Phi 110.128    phi2 345.483   scatter 0.0   fraction 1.0 
+[grain285]
+(gauss) phi1 94.864   Phi 119.313    phi2 163.348   scatter 0.0   fraction 1.0 
+[grain286]
+(gauss) phi1 77.605   Phi 61.906    phi2 70.474   scatter 0.0   fraction 1.0 
+[grain287]
+(gauss) phi1 94.447   Phi 31.259    phi2 285.215   scatter 0.0   fraction 1.0 
+[grain288]
+(gauss) phi1 4.879   Phi 53.616    phi2 269.742   scatter 0.0   fraction 1.0 
+[grain289]
+(gauss) phi1 213.236   Phi 11.054    phi2 173.330   scatter 0.0   fraction 1.0 
+[grain290]
+(gauss) phi1 252.143   Phi 86.014    phi2 263.316   scatter 0.0   fraction 1.0 
+[grain291]
+(gauss) phi1 185.315   Phi 75.415    phi2 84.480   scatter 0.0   fraction 1.0 
+[grain292]
+(gauss) phi1 314.797   Phi 139.593    phi2 158.955   scatter 0.0   fraction 1.0 
+[grain293]
+(gauss) phi1 77.745   Phi 68.802    phi2 93.432   scatter 0.0   fraction 1.0 
+[grain294]
+(gauss) phi1 193.673   Phi 70.066    phi2 7.467   scatter 0.0   fraction 1.0 
+[grain295]
+(gauss) phi1 78.892   Phi 103.354    phi2 36.127   scatter 0.0   fraction 1.0 
+[grain296]
+(gauss) phi1 58.110   Phi 91.040    phi2 0.930   scatter 0.0   fraction 1.0 
+[grain297]
+(gauss) phi1 274.884   Phi 104.569    phi2 319.273   scatter 0.0   fraction 1.0 
+[grain298]
+(gauss) phi1 100.945   Phi 80.910    phi2 107.182   scatter 0.0   fraction 1.0 
+[grain299]
+(gauss) phi1 344.553   Phi 29.101    phi2 112.306   scatter 0.0   fraction 1.0 
+[grain300]
+(gauss) phi1 332.372   Phi 95.580    phi2 161.859   scatter 0.0   fraction 1.0 
+[grain301]
+(gauss) phi1 149.053   Phi 114.608    phi2 232.755   scatter 0.0   fraction 1.0 
+[grain302]
+(gauss) phi1 152.131   Phi 107.972    phi2 320.287   scatter 0.0   fraction 1.0 
+[grain303]
+(gauss) phi1 157.585   Phi 83.419    phi2 111.420   scatter 0.0   fraction 1.0 
+[grain304]
+(gauss) phi1 212.084   Phi 91.184    phi2 207.460   scatter 0.0   fraction 1.0 
+[grain305]
+(gauss) phi1 63.733   Phi 73.623    phi2 162.365   scatter 0.0   fraction 1.0 
+[grain306]
+(gauss) phi1 225.248   Phi 17.182    phi2 222.812   scatter 0.0   fraction 1.0 
+[grain307]
+(gauss) phi1 6.451   Phi 104.737    phi2 173.980   scatter 0.0   fraction 1.0 
+[grain308]
+(gauss) phi1 87.135   Phi 87.991    phi2 191.572   scatter 0.0   fraction 1.0 
+[grain309]
+(gauss) phi1 215.292   Phi 96.746    phi2 226.169   scatter 0.0   fraction 1.0 
+[grain310]
+(gauss) phi1 285.851   Phi 60.912    phi2 5.781   scatter 0.0   fraction 1.0 
+[grain311]
+(gauss) phi1 232.903   Phi 14.095    phi2 100.410   scatter 0.0   fraction 1.0 
+[grain312]
+(gauss) phi1 307.145   Phi 145.321    phi2 193.675   scatter 0.0   fraction 1.0 
+[grain313]
+(gauss) phi1 185.628   Phi 75.708    phi2 210.377   scatter 0.0   fraction 1.0 
+[grain314]
+(gauss) phi1 50.035   Phi 80.495    phi2 113.030   scatter 0.0   fraction 1.0 
+[grain315]
+(gauss) phi1 263.909   Phi 79.608    phi2 117.369   scatter 0.0   fraction 1.0 
+[grain316]
+(gauss) phi1 272.486   Phi 99.177    phi2 244.853   scatter 0.0   fraction 1.0 
+[grain317]
+(gauss) phi1 294.601   Phi 81.092    phi2 330.201   scatter 0.0   fraction 1.0 
+[grain318]
+(gauss) phi1 81.370   Phi 97.353    phi2 77.784   scatter 0.0   fraction 1.0 
+[grain319]
+(gauss) phi1 147.189   Phi 122.668    phi2 184.413   scatter 0.0   fraction 1.0 
+[grain320]
+(gauss) phi1 89.481   Phi 102.118    phi2 264.307   scatter 0.0   fraction 1.0 
+[grain321]
+(gauss) phi1 199.826   Phi 75.128    phi2 342.863   scatter 0.0   fraction 1.0 
+[grain322]
+(gauss) phi1 62.823   Phi 120.155    phi2 324.644   scatter 0.0   fraction 1.0 
+[grain323]
+(gauss) phi1 83.310   Phi 176.887    phi2 139.732   scatter 0.0   fraction 1.0 
+[grain324]
+(gauss) phi1 266.944   Phi 100.421    phi2 23.658   scatter 0.0   fraction 1.0 
+[grain325]
+(gauss) phi1 12.471   Phi 145.454    phi2 105.281   scatter 0.0   fraction 1.0 
+[grain326]
+(gauss) phi1 230.998   Phi 53.171    phi2 123.586   scatter 0.0   fraction 1.0 
+[grain327]
+(gauss) phi1 57.631   Phi 149.544    phi2 260.357   scatter 0.0   fraction 1.0 
+[grain328]
+(gauss) phi1 179.432   Phi 54.612    phi2 51.193   scatter 0.0   fraction 1.0 
+[grain329]
+(gauss) phi1 274.325   Phi 115.451    phi2 340.870   scatter 0.0   fraction 1.0 
+[grain330]
+(gauss) phi1 279.648   Phi 84.791    phi2 185.183   scatter 0.0   fraction 1.0 
+[grain331]
+(gauss) phi1 251.831   Phi 116.267    phi2 345.639   scatter 0.0   fraction 1.0 
+[grain332]
+(gauss) phi1 274.846   Phi 29.437    phi2 109.220   scatter 0.0   fraction 1.0 
+[grain333]
+(gauss) phi1 144.253   Phi 152.360    phi2 358.836   scatter 0.0   fraction 1.0 
+[grain334]
+(gauss) phi1 89.481   Phi 102.118    phi2 264.307   scatter 0.0   fraction 1.0 
+[grain335]
+(gauss) phi1 126.570   Phi 136.323    phi2 119.253   scatter 0.0   fraction 1.0 
+[grain336]
+(gauss) phi1 174.010   Phi 117.504    phi2 45.699   scatter 0.0   fraction 1.0 
+[grain337]
+(gauss) phi1 216.859   Phi 72.486    phi2 53.079   scatter 0.0   fraction 1.0 
+[grain338]
+(gauss) phi1 277.815   Phi 95.435    phi2 356.693   scatter 0.0   fraction 1.0 
+[grain339]
+(gauss) phi1 10.866   Phi 39.087    phi2 92.430   scatter 0.0   fraction 1.0 
+[grain340]
+(gauss) phi1 79.528   Phi 85.933    phi2 160.134   scatter 0.0   fraction 1.0 
+[grain341]
+(gauss) phi1 93.487   Phi 78.214    phi2 4.121   scatter 0.0   fraction 1.0 
+[grain342]
+(gauss) phi1 82.446   Phi 88.672    phi2 281.632   scatter 0.0   fraction 1.0 
+[grain343]
+(gauss) phi1 39.734   Phi 127.572    phi2 280.884   scatter 0.0   fraction 1.0 
+[grain344]
+(gauss) phi1 65.405   Phi 125.329    phi2 93.545   scatter 0.0   fraction 1.0 
+[grain345]
+(gauss) phi1 161.685   Phi 62.516    phi2 217.797   scatter 0.0   fraction 1.0 
+[grain346]
+(gauss) phi1 354.045   Phi 135.121    phi2 143.023   scatter 0.0   fraction 1.0 
+[grain347]
+(gauss) phi1 188.898   Phi 125.224    phi2 256.062   scatter 0.0   fraction 1.0 
+[grain348]
+(gauss) phi1 230.109   Phi 30.069    phi2 229.651   scatter 0.0   fraction 1.0 
+[grain349]
+(gauss) phi1 253.824   Phi 135.992    phi2 48.772   scatter 0.0   fraction 1.0 
+[grain350]
+(gauss) phi1 177.254   Phi 59.713    phi2 17.201   scatter 0.0   fraction 1.0 
+[grain351]
+(gauss) phi1 162.059   Phi 131.456    phi2 338.440   scatter 0.0   fraction 1.0 
+[grain352]
+(gauss) phi1 287.004   Phi 130.907    phi2 95.745   scatter 0.0   fraction 1.0 
+[grain353]
+(gauss) phi1 33.709   Phi 76.702    phi2 159.477   scatter 0.0   fraction 1.0 
+[grain354]
+(gauss) phi1 266.748   Phi 160.521    phi2 232.577   scatter 0.0   fraction 1.0 
+[grain355]
+(gauss) phi1 13.520   Phi 65.176    phi2 353.974   scatter 0.0   fraction 1.0 
+[grain356]
+(gauss) phi1 257.477   Phi 96.485    phi2 285.945   scatter 0.0   fraction 1.0 
+[grain357]
+(gauss) phi1 128.872   Phi 91.714    phi2 326.395   scatter 0.0   fraction 1.0 
+[grain358]
+(gauss) phi1 13.727   Phi 22.134    phi2 354.129   scatter 0.0   fraction 1.0 
+[grain359]
+(gauss) phi1 52.692   Phi 54.998    phi2 156.065   scatter 0.0   fraction 1.0 
+[grain360]
+(gauss) phi1 308.480   Phi 35.709    phi2 295.992   scatter 0.0   fraction 1.0 
+[grain361]
+(gauss) phi1 186.855   Phi 74.210    phi2 25.491   scatter 0.0   fraction 1.0 
+[grain362]
+(gauss) phi1 137.082   Phi 76.580    phi2 85.929   scatter 0.0   fraction 1.0 
+[grain363]
+(gauss) phi1 247.628   Phi 97.896    phi2 169.664   scatter 0.0   fraction 1.0 
+[grain364]
+(gauss) phi1 2.489   Phi 15.643    phi2 2.785   scatter 0.0   fraction 1.0 
+[grain365]
+(gauss) phi1 214.375   Phi 168.557    phi2 225.949   scatter 0.0   fraction 1.0 
+[grain366]
+(gauss) phi1 13.274   Phi 78.157    phi2 174.379   scatter 0.0   fraction 1.0 
+[grain367]
+(gauss) phi1 30.708   Phi 14.224    phi2 164.643   scatter 0.0   fraction 1.0 
+[grain368]
+(gauss) phi1 57.855   Phi 128.028    phi2 91.925   scatter 0.0   fraction 1.0 
+[grain369]
+(gauss) phi1 128.710   Phi 25.502    phi2 132.554   scatter 0.0   fraction 1.0 
+[grain370]
+(gauss) phi1 17.987   Phi 131.386    phi2 15.457   scatter 0.0   fraction 1.0 
+[grain371]
+(gauss) phi1 303.120   Phi 74.198    phi2 349.872   scatter 0.0   fraction 1.0 
+[grain372]
+(gauss) phi1 5.419   Phi 173.526    phi2 194.270   scatter 0.0   fraction 1.0 
+[grain373]
+(gauss) phi1 252.496   Phi 111.321    phi2 179.099   scatter 0.0   fraction 1.0 
+[grain374]
+(gauss) phi1 223.289   Phi 45.625    phi2 149.943   scatter 0.0   fraction 1.0 
+[grain375]
+(gauss) phi1 22.345   Phi 131.342    phi2 311.875   scatter 0.0   fraction 1.0 
+[grain376]
+(gauss) phi1 134.477   Phi 57.451    phi2 185.954   scatter 0.0   fraction 1.0 
+[grain377]
+(gauss) phi1 356.352   Phi 153.823    phi2 271.793   scatter 0.0   fraction 1.0 
+[grain378]
+(gauss) phi1 27.105   Phi 54.929    phi2 90.768   scatter 0.0   fraction 1.0 
+[grain379]
+(gauss) phi1 21.687   Phi 134.196    phi2 60.763   scatter 0.0   fraction 1.0 
+[grain380]
+(gauss) phi1 87.247   Phi 49.352    phi2 20.771   scatter 0.0   fraction 1.0 
+[grain381]
+(gauss) phi1 177.213   Phi 62.425    phi2 275.633   scatter 0.0   fraction 1.0 
+[grain382]
+(gauss) phi1 278.717   Phi 73.934    phi2 108.017   scatter 0.0   fraction 1.0 
+[grain383]
+(gauss) phi1 303.830   Phi 83.539    phi2 230.685   scatter 0.0   fraction 1.0 
+[grain384]
+(gauss) phi1 315.864   Phi 99.128    phi2 46.031   scatter 0.0   fraction 1.0 
+[grain385]
+(gauss) phi1 2.208   Phi 92.509    phi2 256.366   scatter 0.0   fraction 1.0 
+[grain386]
+(gauss) phi1 55.547   Phi 176.830    phi2 232.705   scatter 0.0   fraction 1.0 
+[grain387]
+(gauss) phi1 107.396   Phi 172.555    phi2 191.900   scatter 0.0   fraction 1.0 
+[grain388]
+(gauss) phi1 230.111   Phi 134.992    phi2 220.034   scatter 0.0   fraction 1.0 
+[grain389]
+(gauss) phi1 344.174   Phi 6.594    phi2 212.753   scatter 0.0   fraction 1.0 
+[grain390]
+(gauss) phi1 106.175   Phi 15.905    phi2 298.742   scatter 0.0   fraction 1.0 
+[grain391]
+(gauss) phi1 277.381   Phi 108.256    phi2 85.266   scatter 0.0   fraction 1.0 
+[grain392]
+(gauss) phi1 262.711   Phi 91.006    phi2 174.739   scatter 0.0   fraction 1.0 
+[grain393]
+(gauss) phi1 186.295   Phi 156.658    phi2 270.407   scatter 0.0   fraction 1.0 
+[grain394]
+(gauss) phi1 198.612   Phi 88.798    phi2 273.654   scatter 0.0   fraction 1.0 
+[grain395]
+(gauss) phi1 83.089   Phi 117.696    phi2 319.853   scatter 0.0   fraction 1.0 
+[grain396]
+(gauss) phi1 218.588   Phi 21.088    phi2 64.675   scatter 0.0   fraction 1.0 
+[grain397]
+(gauss) phi1 260.593   Phi 10.027    phi2 281.274   scatter 0.0   fraction 1.0 
+[grain398]
+(gauss) phi1 333.393   Phi 94.822    phi2 144.485   scatter 0.0   fraction 1.0 
+[grain399]
+(gauss) phi1 257.521   Phi 89.976    phi2 275.383   scatter 0.0   fraction 1.0 
+[grain400]
+(gauss) phi1 347.844   Phi 94.511    phi2 245.834   scatter 0.0   fraction 1.0 
+[grain401]
+(gauss) phi1 190.534   Phi 96.610    phi2 276.595   scatter 0.0   fraction 1.0 
+[grain402]
+(gauss) phi1 77.913   Phi 135.873    phi2 73.778   scatter 0.0   fraction 1.0 
+[grain403]
+(gauss) phi1 278.648   Phi 30.832    phi2 117.292   scatter 0.0   fraction 1.0 
+[grain404]
+(gauss) phi1 3.738   Phi 110.737    phi2 86.511   scatter 0.0   fraction 1.0 
+[grain405]
+(gauss) phi1 203.394   Phi 79.054    phi2 132.512   scatter 0.0   fraction 1.0 
+[grain406]
+(gauss) phi1 20.869   Phi 88.177    phi2 151.698   scatter 0.0   fraction 1.0 
+[grain407]
+(gauss) phi1 198.642   Phi 104.679    phi2 187.454   scatter 0.0   fraction 1.0 
+[grain408]
+(gauss) phi1 12.913   Phi 146.607    phi2 104.097   scatter 0.0   fraction 1.0 
+[grain409]
+(gauss) phi1 208.298   Phi 69.440    phi2 102.367   scatter 0.0   fraction 1.0 
+[grain410]
+(gauss) phi1 50.974   Phi 69.670    phi2 235.177   scatter 0.0   fraction 1.0 
+[grain411]
+(gauss) phi1 69.496   Phi 65.943    phi2 10.536   scatter 0.0   fraction 1.0 
+[grain412]
+(gauss) phi1 63.733   Phi 73.623    phi2 162.365   scatter 0.0   fraction 1.0 
+[grain413]
+(gauss) phi1 174.932   Phi 100.738    phi2 12.644   scatter 0.0   fraction 1.0 
+[grain414]
+(gauss) phi1 172.406   Phi 126.703    phi2 50.977   scatter 0.0   fraction 1.0 
+[grain415]
+(gauss) phi1 74.852   Phi 86.729    phi2 249.140   scatter 0.0   fraction 1.0 
+[grain416]
+(gauss) phi1 165.206   Phi 66.735    phi2 29.280   scatter 0.0   fraction 1.0 
+[grain417]
+(gauss) phi1 198.281   Phi 66.635    phi2 0.831   scatter 0.0   fraction 1.0 
+[grain418]
+(gauss) phi1 146.961   Phi 156.234    phi2 153.946   scatter 0.0   fraction 1.0 
+[grain419]
+(gauss) phi1 7.185   Phi 104.258    phi2 192.097   scatter 0.0   fraction 1.0 
+[grain420]
+(gauss) phi1 342.642   Phi 59.834    phi2 169.863   scatter 0.0   fraction 1.0 
+[grain421]
+(gauss) phi1 308.067   Phi 86.337    phi2 161.874   scatter 0.0   fraction 1.0 
+[grain422]
+(gauss) phi1 196.098   Phi 109.804    phi2 21.823   scatter 0.0   fraction 1.0 
+[grain423]
+(gauss) phi1 203.267   Phi 1.902    phi2 132.352   scatter 0.0   fraction 1.0 
+[grain424]
+(gauss) phi1 0.812   Phi 67.293    phi2 292.271   scatter 0.0   fraction 1.0 
+[grain425]
+(gauss) phi1 89.690   Phi 89.619    phi2 271.195   scatter 0.0   fraction 1.0 
+[grain426]
+(gauss) phi1 109.611   Phi 85.626    phi2 157.746   scatter 0.0   fraction 1.0 
+[grain427]
+(gauss) phi1 93.854   Phi 51.744    phi2 319.696   scatter 0.0   fraction 1.0 
+[grain428]
+(gauss) phi1 33.218   Phi 42.247    phi2 317.123   scatter 0.0   fraction 1.0 
+[grain429]
+(gauss) phi1 209.072   Phi 34.534    phi2 0.355   scatter 0.0   fraction 1.0 
+[grain430]
+(gauss) phi1 304.416   Phi 6.699    phi2 178.687   scatter 0.0   fraction 1.0 
+[grain431]
+(gauss) phi1 107.769   Phi 134.443    phi2 240.435   scatter 0.0   fraction 1.0 
+[grain432]
+(gauss) phi1 86.599   Phi 47.291    phi2 91.987   scatter 0.0   fraction 1.0 
+[grain433]
+(gauss) phi1 113.153   Phi 88.877    phi2 124.451   scatter 0.0   fraction 1.0 
+[grain434]
+(gauss) phi1 264.569   Phi 75.561    phi2 270.062   scatter 0.0   fraction 1.0 
+[grain435]
+(gauss) phi1 292.085   Phi 82.235    phi2 158.950   scatter 0.0   fraction 1.0 
+[grain436]
+(gauss) phi1 1.681   Phi 152.260    phi2 275.053   scatter 0.0   fraction 1.0 
+[grain437]
+(gauss) phi1 350.404   Phi 89.419    phi2 323.748   scatter 0.0   fraction 1.0 
+[grain438]
+(gauss) phi1 16.452   Phi 71.074    phi2 177.065   scatter 0.0   fraction 1.0 
+[grain439]
+(gauss) phi1 111.837   Phi 101.967    phi2 46.498   scatter 0.0   fraction 1.0 
+[grain440]
+(gauss) phi1 67.774   Phi 98.014    phi2 2.287   scatter 0.0   fraction 1.0 
+[grain441]
+(gauss) phi1 268.355   Phi 45.744    phi2 288.423   scatter 0.0   fraction 1.0 
+[grain442]
+(gauss) phi1 165.122   Phi 85.801    phi2 170.316   scatter 0.0   fraction 1.0 
+[grain443]
+(gauss) phi1 135.775   Phi 133.761    phi2 125.369   scatter 0.0   fraction 1.0 
+[grain444]
+(gauss) phi1 1.105   Phi 70.119    phi2 229.832   scatter 0.0   fraction 1.0 
+[grain445]
+(gauss) phi1 50.904   Phi 172.184    phi2 305.339   scatter 0.0   fraction 1.0 
+[grain446]
+(gauss) phi1 349.780   Phi 85.744    phi2 14.692   scatter 0.0   fraction 1.0 
+[grain447]
+(gauss) phi1 204.730   Phi 162.806    phi2 18.371   scatter 0.0   fraction 1.0 
+[grain448]
+(gauss) phi1 206.843   Phi 110.256    phi2 132.379   scatter 0.0   fraction 1.0 
+[grain449]
+(gauss) phi1 177.480   Phi 77.499    phi2 305.827   scatter 0.0   fraction 1.0 
+[grain450]
+(gauss) phi1 319.303   Phi 25.785    phi2 139.594   scatter 0.0   fraction 1.0 
+[grain451]
+(gauss) phi1 238.778   Phi 147.055    phi2 247.841   scatter 0.0   fraction 1.0 
+[grain452]
+(gauss) phi1 199.008   Phi 23.751    phi2 269.318   scatter 0.0   fraction 1.0 
+[grain453]
+(gauss) phi1 99.857   Phi 103.426    phi2 173.748   scatter 0.0   fraction 1.0 
+[grain454]
+(gauss) phi1 33.592   Phi 86.943    phi2 101.964   scatter 0.0   fraction 1.0 
+[grain455]
+(gauss) phi1 324.848   Phi 132.596    phi2 58.768   scatter 0.0   fraction 1.0 
+[grain456]
+(gauss) phi1 294.601   Phi 81.092    phi2 330.201   scatter 0.0   fraction 1.0 
+[grain457]
+(gauss) phi1 255.759   Phi 52.863    phi2 115.176   scatter 0.0   fraction 1.0 
+[grain458]
+(gauss) phi1 65.388   Phi 120.510    phi2 354.913   scatter 0.0   fraction 1.0 
+[grain459]
+(gauss) phi1 16.171   Phi 113.110    phi2 277.006   scatter 0.0   fraction 1.0 
+[grain460]
+(gauss) phi1 58.965   Phi 85.359    phi2 89.645   scatter 0.0   fraction 1.0 
+[grain461]
+(gauss) phi1 326.746   Phi 83.356    phi2 135.272   scatter 0.0   fraction 1.0 
+[grain462]
+(gauss) phi1 70.007   Phi 53.824    phi2 26.880   scatter 0.0   fraction 1.0 
+[grain463]
+(gauss) phi1 157.744   Phi 91.372    phi2 263.251   scatter 0.0   fraction 1.0 
+[grain464]
+(gauss) phi1 127.753   Phi 54.401    phi2 36.664   scatter 0.0   fraction 1.0 
+[grain465]
+(gauss) phi1 2.578   Phi 103.837    phi2 3.833   scatter 0.0   fraction 1.0 
+[grain466]
+(gauss) phi1 172.406   Phi 126.703    phi2 50.977   scatter 0.0   fraction 1.0 
+[grain467]
+(gauss) phi1 270.625   Phi 86.484    phi2 203.641   scatter 0.0   fraction 1.0 
+[grain468]
+(gauss) phi1 86.506   Phi 71.923    phi2 209.596   scatter 0.0   fraction 1.0 
+[grain469]
+(gauss) phi1 173.844   Phi 89.379    phi2 217.703   scatter 0.0   fraction 1.0 
+[grain470]
+(gauss) phi1 192.224   Phi 109.124    phi2 188.245   scatter 0.0   fraction 1.0 
+[grain471]
+(gauss) phi1 232.796   Phi 173.617    phi2 138.518   scatter 0.0   fraction 1.0 
+[grain472]
+(gauss) phi1 272.036   Phi 121.877    phi2 135.751   scatter 0.0   fraction 1.0 
+[grain473]
+(gauss) phi1 63.580   Phi 43.359    phi2 199.999   scatter 0.0   fraction 1.0 
+[grain474]
+(gauss) phi1 245.039   Phi 110.594    phi2 170.010   scatter 0.0   fraction 1.0 
+[grain475]
+(gauss) phi1 186.153   Phi 123.658    phi2 161.759   scatter 0.0   fraction 1.0 
+[grain476]
+(gauss) phi1 167.677   Phi 30.991    phi2 94.669   scatter 0.0   fraction 1.0 
+[grain477]
+(gauss) phi1 88.836   Phi 122.416    phi2 16.413   scatter 0.0   fraction 1.0 
+[grain478]
+(gauss) phi1 6.675   Phi 150.135    phi2 96.288   scatter 0.0   fraction 1.0 
+[grain479]
+(gauss) phi1 30.558   Phi 140.955    phi2 258.061   scatter 0.0   fraction 1.0 
+[grain480]
+(gauss) phi1 164.553   Phi 82.766    phi2 156.028   scatter 0.0   fraction 1.0 
+[grain481]
+(gauss) phi1 243.420   Phi 96.504    phi2 170.297   scatter 0.0   fraction 1.0 
+[grain482]
+(gauss) phi1 184.060   Phi 101.802    phi2 271.191   scatter 0.0   fraction 1.0 
+[grain483]
+(gauss) phi1 279.069   Phi 93.716    phi2 64.099   scatter 0.0   fraction 1.0 
+[grain484]
+(gauss) phi1 206.106   Phi 80.733    phi2 272.478   scatter 0.0   fraction 1.0 
+[grain485]
+(gauss) phi1 99.678   Phi 132.518    phi2 282.155   scatter 0.0   fraction 1.0 
+[grain486]
+(gauss) phi1 183.308   Phi 78.131    phi2 292.371   scatter 0.0   fraction 1.0 
+[grain487]
+(gauss) phi1 214.497   Phi 163.264    phi2 203.148   scatter 0.0   fraction 1.0 
+[grain488]
+(gauss) phi1 288.896   Phi 81.007    phi2 279.488   scatter 0.0   fraction 1.0 
+[grain489]
+(gauss) phi1 348.266   Phi 106.657    phi2 274.866   scatter 0.0   fraction 1.0 
+[grain490]
+(gauss) phi1 102.915   Phi 136.739    phi2 79.000   scatter 0.0   fraction 1.0 
+[grain491]
+(gauss) phi1 85.341   Phi 93.907    phi2 296.705   scatter 0.0   fraction 1.0 
+[grain492]
+(gauss) phi1 173.774   Phi 85.814    phi2 231.115   scatter 0.0   fraction 1.0 
+[grain493]
+(gauss) phi1 327.059   Phi 107.116    phi2 64.307   scatter 0.0   fraction 1.0 
+[grain494]
+(gauss) phi1 283.741   Phi 40.247    phi2 10.754   scatter 0.0   fraction 1.0 
+[grain495]
+(gauss) phi1 152.758   Phi 117.974    phi2 343.580   scatter 0.0   fraction 1.0 
+[grain496]
+(gauss) phi1 79.149   Phi 73.578    phi2 30.537   scatter 0.0   fraction 1.0 
+[grain497]
+(gauss) phi1 122.984   Phi 13.315    phi2 186.499   scatter 0.0   fraction 1.0 
+[grain498]
+(gauss) phi1 260.706   Phi 136.234    phi2 4.197   scatter 0.0   fraction 1.0 
+[grain499]
+(gauss) phi1 0.106   Phi 11.054    phi2 107.325   scatter 0.0   fraction 1.0 
+[grain500]
+(gauss) phi1 212.333   Phi 81.166    phi2 313.649   scatter 0.0   fraction 1.0 
+[grain501]
+(gauss) phi1 191.633   Phi 173.346    phi2 198.085   scatter 0.0   fraction 1.0 
+[grain502]
+(gauss) phi1 210.454   Phi 71.169    phi2 88.547   scatter 0.0   fraction 1.0 
+[grain503]
+(gauss) phi1 181.841   Phi 90.420    phi2 303.877   scatter 0.0   fraction 1.0 
+[grain504]
+(gauss) phi1 284.107   Phi 124.010    phi2 299.538   scatter 0.0   fraction 1.0 
+[grain505]
+(gauss) phi1 282.334   Phi 10.301    phi2 229.180   scatter 0.0   fraction 1.0 
+[grain506]
+(gauss) phi1 119.352   Phi 83.421    phi2 307.172   scatter 0.0   fraction 1.0 
+[grain507]
+(gauss) phi1 358.054   Phi 69.089    phi2 218.481   scatter 0.0   fraction 1.0 
+[grain508]
+(gauss) phi1 274.537   Phi 99.970    phi2 69.793   scatter 0.0   fraction 1.0 
+[grain509]
+(gauss) phi1 105.806   Phi 64.711    phi2 185.195   scatter 0.0   fraction 1.0 
+[grain510]
+(gauss) phi1 191.838   Phi 109.196    phi2 147.106   scatter 0.0   fraction 1.0 
+[grain511]
+(gauss) phi1 11.150   Phi 28.157    phi2 101.132   scatter 0.0   fraction 1.0 
+[grain512]
+(gauss) phi1 278.779   Phi 127.861    phi2 120.593   scatter 0.0   fraction 1.0 
+[grain513]
+(gauss) phi1 354.186   Phi 84.418    phi2 94.981   scatter 0.0   fraction 1.0 
+[grain514]
+(gauss) phi1 263.909   Phi 79.608    phi2 117.369   scatter 0.0   fraction 1.0 
+[grain515]
+(gauss) phi1 258.444   Phi 25.839    phi2 146.653   scatter 0.0   fraction 1.0 
+[grain516]
+(gauss) phi1 35.667   Phi 98.794    phi2 120.044   scatter 0.0   fraction 1.0 
+[grain517]
+(gauss) phi1 328.031   Phi 135.968    phi2 141.633   scatter 0.0   fraction 1.0 
+[grain518]
+(gauss) phi1 289.341   Phi 29.430    phi2 251.299   scatter 0.0   fraction 1.0 
+[grain519]
+(gauss) phi1 109.919   Phi 130.354    phi2 22.087   scatter 0.0   fraction 1.0 
+[grain520]
+(gauss) phi1 175.051   Phi 104.768    phi2 240.754   scatter 0.0   fraction 1.0 
+[grain521]
+(gauss) phi1 41.945   Phi 91.914    phi2 27.246   scatter 0.0   fraction 1.0 
+[grain522]
+(gauss) phi1 306.470   Phi 100.111    phi2 296.967   scatter 0.0   fraction 1.0 
+[grain523]
+(gauss) phi1 74.547   Phi 119.867    phi2 235.042   scatter 0.0   fraction 1.0 
+[grain524]
+(gauss) phi1 258.571   Phi 117.433    phi2 158.558   scatter 0.0   fraction 1.0 
+[grain525]
+(gauss) phi1 287.329   Phi 91.861    phi2 127.167   scatter 0.0   fraction 1.0 
+[grain526]
+(gauss) phi1 180.793   Phi 160.072    phi2 274.034   scatter 0.0   fraction 1.0 
+[grain527]
+(gauss) phi1 179.330   Phi 84.909    phi2 178.555   scatter 0.0   fraction 1.0 
+[grain528]
+(gauss) phi1 19.224   Phi 34.092    phi2 180.911   scatter 0.0   fraction 1.0 
+[grain529]
+(gauss) phi1 298.421   Phi 159.227    phi2 46.729   scatter 0.0   fraction 1.0 
+[grain530]
+(gauss) phi1 81.018   Phi 87.794    phi2 135.799   scatter 0.0   fraction 1.0 
+[grain531]
+(gauss) phi1 259.152   Phi 117.413    phi2 43.326   scatter 0.0   fraction 1.0 
+[grain532]
+(gauss) phi1 84.760   Phi 100.186    phi2 243.356   scatter 0.0   fraction 1.0 
+[grain533]
+(gauss) phi1 280.900   Phi 52.138    phi2 74.357   scatter 0.0   fraction 1.0 
+[grain534]
+(gauss) phi1 192.363   Phi 160.632    phi2 147.825   scatter 0.0   fraction 1.0 
+[grain535]
+(gauss) phi1 257.129   Phi 40.458    phi2 270.487   scatter 0.0   fraction 1.0 
+[grain536]
+(gauss) phi1 253.175   Phi 74.909    phi2 322.882   scatter 0.0   fraction 1.0 
+[grain537]
+(gauss) phi1 192.772   Phi 128.140    phi2 8.156   scatter 0.0   fraction 1.0 
+[grain538]
+(gauss) phi1 161.740   Phi 18.480    phi2 339.742   scatter 0.0   fraction 1.0 
+[grain539]
+(gauss) phi1 220.380   Phi 163.240    phi2 145.613   scatter 0.0   fraction 1.0 
+[grain540]
+(gauss) phi1 301.552   Phi 120.737    phi2 243.417   scatter 0.0   fraction 1.0 
+[grain541]
+(gauss) phi1 65.376   Phi 99.741    phi2 87.210   scatter 0.0   fraction 1.0 
+[grain542]
+(gauss) phi1 177.213   Phi 62.425    phi2 275.633   scatter 0.0   fraction 1.0 
+[grain543]
+(gauss) phi1 212.138   Phi 43.696    phi2 244.761   scatter 0.0   fraction 1.0 
+[grain544]
+(gauss) phi1 33.630   Phi 79.046    phi2 353.901   scatter 0.0   fraction 1.0 
+[grain545]
+(gauss) phi1 169.277   Phi 59.343    phi2 237.159   scatter 0.0   fraction 1.0 
+[grain546]
+(gauss) phi1 120.219   Phi 98.732    phi2 248.447   scatter 0.0   fraction 1.0 
+[grain547]
+(gauss) phi1 357.218   Phi 114.006    phi2 135.411   scatter 0.0   fraction 1.0 
+[grain548]
+(gauss) phi1 215.337   Phi 73.783    phi2 144.157   scatter 0.0   fraction 1.0 
+[grain549]
+(gauss) phi1 271.425   Phi 86.090    phi2 170.579   scatter 0.0   fraction 1.0 
+[grain550]
+(gauss) phi1 215.589   Phi 57.784    phi2 191.039   scatter 0.0   fraction 1.0 
+[grain551]
+(gauss) phi1 193.465   Phi 10.182    phi2 344.316   scatter 0.0   fraction 1.0 
+[grain552]
+(gauss) phi1 225.279   Phi 62.992    phi2 84.177   scatter 0.0   fraction 1.0 
+[grain553]
+(gauss) phi1 342.990   Phi 11.108    phi2 7.751   scatter 0.0   fraction 1.0 
+[grain554]
+(gauss) phi1 343.288   Phi 95.539    phi2 78.388   scatter 0.0   fraction 1.0 
+[grain555]
+(gauss) phi1 4.187   Phi 32.170    phi2 73.431   scatter 0.0   fraction 1.0 
+[grain556]
+(gauss) phi1 199.826   Phi 75.128    phi2 342.863   scatter 0.0   fraction 1.0 
+[grain557]
+(gauss) phi1 186.944   Phi 95.929    phi2 223.878   scatter 0.0   fraction 1.0 
+[grain558]
+(gauss) phi1 171.326   Phi 100.788    phi2 237.247   scatter 0.0   fraction 1.0 
+[grain559]
+(gauss) phi1 76.255   Phi 121.473    phi2 151.029   scatter 0.0   fraction 1.0 
+[grain560]
+(gauss) phi1 156.582   Phi 159.314    phi2 242.638   scatter 0.0   fraction 1.0 
+[grain561]
+(gauss) phi1 223.266   Phi 110.223    phi2 283.959   scatter 0.0   fraction 1.0 
+[grain562]
+(gauss) phi1 90.858   Phi 98.187    phi2 157.709   scatter 0.0   fraction 1.0 
+[grain563]
+(gauss) phi1 349.065   Phi 151.164    phi2 198.651   scatter 0.0   fraction 1.0 
+[grain564]
+(gauss) phi1 183.471   Phi 105.635    phi2 264.425   scatter 0.0   fraction 1.0 
+[grain565]
+(gauss) phi1 229.632   Phi 149.768    phi2 227.445   scatter 0.0   fraction 1.0 
+[grain566]
+(gauss) phi1 324.926   Phi 169.663    phi2 81.611   scatter 0.0   fraction 1.0 
+[grain567]
+(gauss) phi1 47.194   Phi 151.879    phi2 16.682   scatter 0.0   fraction 1.0 
+[grain568]
+(gauss) phi1 102.847   Phi 48.355    phi2 267.500   scatter 0.0   fraction 1.0 
+[grain569]
+(gauss) phi1 146.450   Phi 126.119    phi2 145.138   scatter 0.0   fraction 1.0 
+[grain570]
+(gauss) phi1 62.293   Phi 110.100    phi2 7.151   scatter 0.0   fraction 1.0 
+[grain571]
+(gauss) phi1 2.229   Phi 90.909    phi2 225.518   scatter 0.0   fraction 1.0 
+[grain572]
+(gauss) phi1 301.379   Phi 131.327    phi2 167.113   scatter 0.0   fraction 1.0 
+[grain573]
+(gauss) phi1 212.437   Phi 172.313    phi2 136.780   scatter 0.0   fraction 1.0 
+[grain574]
+(gauss) phi1 275.953   Phi 105.390    phi2 277.194   scatter 0.0   fraction 1.0 
+[grain575]
+(gauss) phi1 195.757   Phi 71.380    phi2 284.674   scatter 0.0   fraction 1.0 
+[grain576]
+(gauss) phi1 5.484   Phi 119.976    phi2 321.690   scatter 0.0   fraction 1.0 
+[grain577]
+(gauss) phi1 353.474   Phi 116.168    phi2 128.552   scatter 0.0   fraction 1.0 
+[grain578]
+(gauss) phi1 229.632   Phi 149.768    phi2 227.445   scatter 0.0   fraction 1.0 
+[grain579]
+(gauss) phi1 70.787   Phi 97.229    phi2 63.945   scatter 0.0   fraction 1.0 
+[grain580]
+(gauss) phi1 205.634   Phi 86.697    phi2 49.022   scatter 0.0   fraction 1.0 
+[grain581]
+(gauss) phi1 175.341   Phi 56.293    phi2 167.434   scatter 0.0   fraction 1.0 
+[grain582]
+(gauss) phi1 318.298   Phi 22.688    phi2 139.312   scatter 0.0   fraction 1.0 
+[grain583]
+(gauss) phi1 93.282   Phi 63.224    phi2 73.093   scatter 0.0   fraction 1.0 
+[grain584]
+(gauss) phi1 275.143   Phi 93.763    phi2 283.433   scatter 0.0   fraction 1.0 
+[grain585]
+(gauss) phi1 235.613   Phi 80.813    phi2 235.710   scatter 0.0   fraction 1.0 
+[grain586]
+(gauss) phi1 298.251   Phi 45.951    phi2 237.534   scatter 0.0   fraction 1.0 
+[grain587]
+(gauss) phi1 141.943   Phi 74.044    phi2 216.575   scatter 0.0   fraction 1.0 
+[grain588]
+(gauss) phi1 169.500   Phi 40.519    phi2 322.135   scatter 0.0   fraction 1.0 
+[grain589]
+(gauss) phi1 121.103   Phi 71.825    phi2 315.137   scatter 0.0   fraction 1.0 
+[grain590]
+(gauss) phi1 354.387   Phi 134.886    phi2 229.864   scatter 0.0   fraction 1.0 
+[grain591]
+(gauss) phi1 190.499   Phi 126.466    phi2 71.626   scatter 0.0   fraction 1.0 
+[grain592]
+(gauss) phi1 50.035   Phi 80.495    phi2 113.030   scatter 0.0   fraction 1.0 
+[grain593]
+(gauss) phi1 309.418   Phi 37.146    phi2 277.881   scatter 0.0   fraction 1.0 
+[grain594]
+(gauss) phi1 128.710   Phi 25.502    phi2 132.554   scatter 0.0   fraction 1.0 
+[grain595]
+(gauss) phi1 134.628   Phi 101.548    phi2 94.197   scatter 0.0   fraction 1.0 
+[grain596]
+(gauss) phi1 122.226   Phi 59.829    phi2 114.105   scatter 0.0   fraction 1.0 
+[grain597]
+(gauss) phi1 18.644   Phi 94.293    phi2 275.159   scatter 0.0   fraction 1.0 
+[grain598]
+(gauss) phi1 359.067   Phi 83.593    phi2 197.898   scatter 0.0   fraction 1.0 
+[grain599]
+(gauss) phi1 176.261   Phi 85.932    phi2 6.429   scatter 0.0   fraction 1.0 
+[grain600]
+(gauss) phi1 10.084   Phi 141.737    phi2 169.261   scatter 0.0   fraction 1.0 
+[grain601]
+(gauss) phi1 279.527   Phi 83.437    phi2 337.385   scatter 0.0   fraction 1.0 
+[grain602]
+(gauss) phi1 99.496   Phi 100.301    phi2 70.016   scatter 0.0   fraction 1.0 
+[grain603]
+(gauss) phi1 354.810   Phi 69.482    phi2 230.062   scatter 0.0   fraction 1.0 
+[grain604]
+(gauss) phi1 204.819   Phi 90.120    phi2 73.296   scatter 0.0   fraction 1.0 
+[grain605]
+(gauss) phi1 5.253   Phi 62.139    phi2 319.037   scatter 0.0   fraction 1.0 
+[grain606]
+(gauss) phi1 223.310   Phi 118.803    phi2 210.240   scatter 0.0   fraction 1.0 
+<microstructure>
+[grain1]
+crystallite 1
+(constituent)   phase 1 texture 1 fraction 1.0
+[grain2]
+crystallite 1
+(constituent)   phase 1 texture 2 fraction 1.0
+[grain3]
+crystallite 1
+(constituent)   phase 1 texture 3 fraction 1.0
+[grain4]
+crystallite 1
+(constituent)   phase 1 texture 4 fraction 1.0
+[grain5]
+crystallite 1
+(constituent)   phase 1 texture 5 fraction 1.0
+[grain6]
+crystallite 1
+(constituent)   phase 1 texture 6 fraction 1.0
+[grain7]
+crystallite 1
+(constituent)   phase 1 texture 7 fraction 1.0
+[grain8]
+crystallite 1
+(constituent)   phase 1 texture 8 fraction 1.0
+[grain9]
+crystallite 1
+(constituent)   phase 1 texture 9 fraction 1.0
+[grain10]
+crystallite 1
+(constituent)   phase 1 texture 10 fraction 1.0
+[grain11]
+crystallite 1
+(constituent)   phase 1 texture 11 fraction 1.0
+[grain12]
+crystallite 1
+(constituent)   phase 1 texture 12 fraction 1.0
+[grain13]
+crystallite 1
+(constituent)   phase 1 texture 13 fraction 1.0
+[grain14]
+crystallite 1
+(constituent)   phase 1 texture 14 fraction 1.0
+[grain15]
+crystallite 1
+(constituent)   phase 1 texture 15 fraction 1.0
+[grain16]
+crystallite 1
+(constituent)   phase 1 texture 16 fraction 1.0
+[grain17]
+crystallite 1
+(constituent)   phase 1 texture 17 fraction 1.0
+[grain18]
+crystallite 1
+(constituent)   phase 1 texture 18 fraction 1.0
+[grain19]
+crystallite 1
+(constituent)   phase 1 texture 19 fraction 1.0
+[grain20]
+crystallite 1
+(constituent)   phase 1 texture 20 fraction 1.0
+[grain21]
+crystallite 1
+(constituent)   phase 1 texture 21 fraction 1.0
+[grain22]
+crystallite 1
+(constituent)   phase 1 texture 22 fraction 1.0
+[grain23]
+crystallite 1
+(constituent)   phase 1 texture 23 fraction 1.0
+[grain24]
+crystallite 1
+(constituent)   phase 1 texture 24 fraction 1.0
+[grain25]
+crystallite 1
+(constituent)   phase 1 texture 25 fraction 1.0
+[grain26]
+crystallite 1
+(constituent)   phase 1 texture 26 fraction 1.0
+[grain27]
+crystallite 1
+(constituent)   phase 1 texture 27 fraction 1.0
+[grain28]
+crystallite 1
+(constituent)   phase 1 texture 28 fraction 1.0
+[grain29]
+crystallite 1
+(constituent)   phase 1 texture 29 fraction 1.0
+[grain30]
+crystallite 1
+(constituent)   phase 1 texture 30 fraction 1.0
+[grain31]
+crystallite 1
+(constituent)   phase 1 texture 31 fraction 1.0
+[grain32]
+crystallite 1
+(constituent)   phase 1 texture 32 fraction 1.0
+[grain33]
+crystallite 1
+(constituent)   phase 1 texture 33 fraction 1.0
+[grain34]
+crystallite 1
+(constituent)   phase 1 texture 34 fraction 1.0
+[grain35]
+crystallite 1
+(constituent)   phase 1 texture 35 fraction 1.0
+[grain36]
+crystallite 1
+(constituent)   phase 1 texture 36 fraction 1.0
+[grain37]
+crystallite 1
+(constituent)   phase 1 texture 37 fraction 1.0
+[grain38]
+crystallite 1
+(constituent)   phase 1 texture 38 fraction 1.0
+[grain39]
+crystallite 1
+(constituent)   phase 1 texture 39 fraction 1.0
+[grain40]
+crystallite 1
+(constituent)   phase 1 texture 40 fraction 1.0
+[grain41]
+crystallite 1
+(constituent)   phase 1 texture 41 fraction 1.0
+[grain42]
+crystallite 1
+(constituent)   phase 1 texture 42 fraction 1.0
+[grain43]
+crystallite 1
+(constituent)   phase 1 texture 43 fraction 1.0
+[grain44]
+crystallite 1
+(constituent)   phase 1 texture 44 fraction 1.0
+[grain45]
+crystallite 1
+(constituent)   phase 1 texture 45 fraction 1.0
+[grain46]
+crystallite 1
+(constituent)   phase 1 texture 46 fraction 1.0
+[grain47]
+crystallite 1
+(constituent)   phase 1 texture 47 fraction 1.0
+[grain48]
+crystallite 1
+(constituent)   phase 1 texture 48 fraction 1.0
+[grain49]
+crystallite 1
+(constituent)   phase 1 texture 49 fraction 1.0
+[grain50]
+crystallite 1
+(constituent)   phase 1 texture 50 fraction 1.0
+[grain51]
+crystallite 1
+(constituent)   phase 1 texture 51 fraction 1.0
+[grain52]
+crystallite 1
+(constituent)   phase 1 texture 52 fraction 1.0
+[grain53]
+crystallite 1
+(constituent)   phase 1 texture 53 fraction 1.0
+[grain54]
+crystallite 1
+(constituent)   phase 1 texture 54 fraction 1.0
+[grain55]
+crystallite 1
+(constituent)   phase 1 texture 55 fraction 1.0
+[grain56]
+crystallite 1
+(constituent)   phase 1 texture 56 fraction 1.0
+[grain57]
+crystallite 1
+(constituent)   phase 1 texture 57 fraction 1.0
+[grain58]
+crystallite 1
+(constituent)   phase 1 texture 58 fraction 1.0
+[grain59]
+crystallite 1
+(constituent)   phase 1 texture 59 fraction 1.0
+[grain60]
+crystallite 1
+(constituent)   phase 1 texture 60 fraction 1.0
+[grain61]
+crystallite 1
+(constituent)   phase 1 texture 61 fraction 1.0
+[grain62]
+crystallite 1
+(constituent)   phase 1 texture 62 fraction 1.0
+[grain63]
+crystallite 1
+(constituent)   phase 1 texture 63 fraction 1.0
+[grain64]
+crystallite 1
+(constituent)   phase 1 texture 64 fraction 1.0
+[grain65]
+crystallite 1
+(constituent)   phase 1 texture 65 fraction 1.0
+[grain66]
+crystallite 1
+(constituent)   phase 1 texture 66 fraction 1.0
+[grain67]
+crystallite 1
+(constituent)   phase 1 texture 67 fraction 1.0
+[grain68]
+crystallite 1
+(constituent)   phase 1 texture 68 fraction 1.0
+[grain69]
+crystallite 1
+(constituent)   phase 1 texture 69 fraction 1.0
+[grain70]
+crystallite 1
+(constituent)   phase 1 texture 70 fraction 1.0
+[grain71]
+crystallite 1
+(constituent)   phase 1 texture 71 fraction 1.0
+[grain72]
+crystallite 1
+(constituent)   phase 1 texture 72 fraction 1.0
+[grain73]
+crystallite 1
+(constituent)   phase 1 texture 73 fraction 1.0
+[grain74]
+crystallite 1
+(constituent)   phase 1 texture 74 fraction 1.0
+[grain75]
+crystallite 1
+(constituent)   phase 1 texture 75 fraction 1.0
+[grain76]
+crystallite 1
+(constituent)   phase 1 texture 76 fraction 1.0
+[grain77]
+crystallite 1
+(constituent)   phase 1 texture 77 fraction 1.0
+[grain78]
+crystallite 1
+(constituent)   phase 1 texture 78 fraction 1.0
+[grain79]
+crystallite 1
+(constituent)   phase 1 texture 79 fraction 1.0
+[grain80]
+crystallite 1
+(constituent)   phase 1 texture 80 fraction 1.0
+[grain81]
+crystallite 1
+(constituent)   phase 1 texture 81 fraction 1.0
+[grain82]
+crystallite 1
+(constituent)   phase 1 texture 82 fraction 1.0
+[grain83]
+crystallite 1
+(constituent)   phase 1 texture 83 fraction 1.0
+[grain84]
+crystallite 1
+(constituent)   phase 1 texture 84 fraction 1.0
+[grain85]
+crystallite 1
+(constituent)   phase 1 texture 85 fraction 1.0
+[grain86]
+crystallite 1
+(constituent)   phase 1 texture 86 fraction 1.0
+[grain87]
+crystallite 1
+(constituent)   phase 1 texture 87 fraction 1.0
+[grain88]
+crystallite 1
+(constituent)   phase 1 texture 88 fraction 1.0
+[grain89]
+crystallite 1
+(constituent)   phase 1 texture 89 fraction 1.0
+[grain90]
+crystallite 1
+(constituent)   phase 1 texture 90 fraction 1.0
+[grain91]
+crystallite 1
+(constituent)   phase 1 texture 91 fraction 1.0
+[grain92]
+crystallite 1
+(constituent)   phase 1 texture 92 fraction 1.0
+[grain93]
+crystallite 1
+(constituent)   phase 1 texture 93 fraction 1.0
+[grain94]
+crystallite 1
+(constituent)   phase 1 texture 94 fraction 1.0
+[grain95]
+crystallite 1
+(constituent)   phase 1 texture 95 fraction 1.0
+[grain96]
+crystallite 1
+(constituent)   phase 1 texture 96 fraction 1.0
+[grain97]
+crystallite 1
+(constituent)   phase 1 texture 97 fraction 1.0
+[grain98]
+crystallite 1
+(constituent)   phase 1 texture 98 fraction 1.0
+[grain99]
+crystallite 1
+(constituent)   phase 1 texture 99 fraction 1.0
+[grain100]
+crystallite 1
+(constituent)   phase 1 texture 100 fraction 1.0
+[grain101]
+crystallite 1
+(constituent)   phase 1 texture 101 fraction 1.0
+[grain102]
+crystallite 1
+(constituent)   phase 1 texture 102 fraction 1.0
+[grain103]
+crystallite 1
+(constituent)   phase 1 texture 103 fraction 1.0
+[grain104]
+crystallite 1
+(constituent)   phase 1 texture 104 fraction 1.0
+[grain105]
+crystallite 1
+(constituent)   phase 1 texture 105 fraction 1.0
+[grain106]
+crystallite 1
+(constituent)   phase 1 texture 106 fraction 1.0
+[grain107]
+crystallite 1
+(constituent)   phase 1 texture 107 fraction 1.0
+[grain108]
+crystallite 1
+(constituent)   phase 1 texture 108 fraction 1.0
+[grain109]
+crystallite 1
+(constituent)   phase 1 texture 109 fraction 1.0
+[grain110]
+crystallite 1
+(constituent)   phase 1 texture 110 fraction 1.0
+[grain111]
+crystallite 1
+(constituent)   phase 1 texture 111 fraction 1.0
+[grain112]
+crystallite 1
+(constituent)   phase 1 texture 112 fraction 1.0
+[grain113]
+crystallite 1
+(constituent)   phase 1 texture 113 fraction 1.0
+[grain114]
+crystallite 1
+(constituent)   phase 1 texture 114 fraction 1.0
+[grain115]
+crystallite 1
+(constituent)   phase 1 texture 115 fraction 1.0
+[grain116]
+crystallite 1
+(constituent)   phase 1 texture 116 fraction 1.0
+[grain117]
+crystallite 1
+(constituent)   phase 1 texture 117 fraction 1.0
+[grain118]
+crystallite 1
+(constituent)   phase 1 texture 118 fraction 1.0
+[grain119]
+crystallite 1
+(constituent)   phase 1 texture 119 fraction 1.0
+[grain120]
+crystallite 1
+(constituent)   phase 1 texture 120 fraction 1.0
+[grain121]
+crystallite 1
+(constituent)   phase 1 texture 121 fraction 1.0
+[grain122]
+crystallite 1
+(constituent)   phase 1 texture 122 fraction 1.0
+[grain123]
+crystallite 1
+(constituent)   phase 1 texture 123 fraction 1.0
+[grain124]
+crystallite 1
+(constituent)   phase 1 texture 124 fraction 1.0
+[grain125]
+crystallite 1
+(constituent)   phase 1 texture 125 fraction 1.0
+[grain126]
+crystallite 1
+(constituent)   phase 1 texture 126 fraction 1.0
+[grain127]
+crystallite 1
+(constituent)   phase 1 texture 127 fraction 1.0
+[grain128]
+crystallite 1
+(constituent)   phase 1 texture 128 fraction 1.0
+[grain129]
+crystallite 1
+(constituent)   phase 1 texture 129 fraction 1.0
+[grain130]
+crystallite 1
+(constituent)   phase 1 texture 130 fraction 1.0
+[grain131]
+crystallite 1
+(constituent)   phase 1 texture 131 fraction 1.0
+[grain132]
+crystallite 1
+(constituent)   phase 1 texture 132 fraction 1.0
+[grain133]
+crystallite 1
+(constituent)   phase 1 texture 133 fraction 1.0
+[grain134]
+crystallite 1
+(constituent)   phase 1 texture 134 fraction 1.0
+[grain135]
+crystallite 1
+(constituent)   phase 1 texture 135 fraction 1.0
+[grain136]
+crystallite 1
+(constituent)   phase 1 texture 136 fraction 1.0
+[grain137]
+crystallite 1
+(constituent)   phase 1 texture 137 fraction 1.0
+[grain138]
+crystallite 1
+(constituent)   phase 1 texture 138 fraction 1.0
+[grain139]
+crystallite 1
+(constituent)   phase 1 texture 139 fraction 1.0
+[grain140]
+crystallite 1
+(constituent)   phase 1 texture 140 fraction 1.0
+[grain141]
+crystallite 1
+(constituent)   phase 1 texture 141 fraction 1.0
+[grain142]
+crystallite 1
+(constituent)   phase 1 texture 142 fraction 1.0
+[grain143]
+crystallite 1
+(constituent)   phase 1 texture 143 fraction 1.0
+[grain144]
+crystallite 1
+(constituent)   phase 1 texture 144 fraction 1.0
+[grain145]
+crystallite 1
+(constituent)   phase 1 texture 145 fraction 1.0
+[grain146]
+crystallite 1
+(constituent)   phase 1 texture 146 fraction 1.0
+[grain147]
+crystallite 1
+(constituent)   phase 1 texture 147 fraction 1.0
+[grain148]
+crystallite 1
+(constituent)   phase 1 texture 148 fraction 1.0
+[grain149]
+crystallite 1
+(constituent)   phase 1 texture 149 fraction 1.0
+[grain150]
+crystallite 1
+(constituent)   phase 1 texture 150 fraction 1.0
+[grain151]
+crystallite 1
+(constituent)   phase 1 texture 151 fraction 1.0
+[grain152]
+crystallite 1
+(constituent)   phase 1 texture 152 fraction 1.0
+[grain153]
+crystallite 1
+(constituent)   phase 1 texture 153 fraction 1.0
+[grain154]
+crystallite 1
+(constituent)   phase 1 texture 154 fraction 1.0
+[grain155]
+crystallite 1
+(constituent)   phase 1 texture 155 fraction 1.0
+[grain156]
+crystallite 1
+(constituent)   phase 1 texture 156 fraction 1.0
+[grain157]
+crystallite 1
+(constituent)   phase 1 texture 157 fraction 1.0
+[grain158]
+crystallite 1
+(constituent)   phase 1 texture 158 fraction 1.0
+[grain159]
+crystallite 1
+(constituent)   phase 1 texture 159 fraction 1.0
+[grain160]
+crystallite 1
+(constituent)   phase 1 texture 160 fraction 1.0
+[grain161]
+crystallite 1
+(constituent)   phase 1 texture 161 fraction 1.0
+[grain162]
+crystallite 1
+(constituent)   phase 1 texture 162 fraction 1.0
+[grain163]
+crystallite 1
+(constituent)   phase 1 texture 163 fraction 1.0
+[grain164]
+crystallite 1
+(constituent)   phase 1 texture 164 fraction 1.0
+[grain165]
+crystallite 1
+(constituent)   phase 1 texture 165 fraction 1.0
+[grain166]
+crystallite 1
+(constituent)   phase 1 texture 166 fraction 1.0
+[grain167]
+crystallite 1
+(constituent)   phase 1 texture 167 fraction 1.0
+[grain168]
+crystallite 1
+(constituent)   phase 1 texture 168 fraction 1.0
+[grain169]
+crystallite 1
+(constituent)   phase 1 texture 169 fraction 1.0
+[grain170]
+crystallite 1
+(constituent)   phase 1 texture 170 fraction 1.0
+[grain171]
+crystallite 1
+(constituent)   phase 1 texture 171 fraction 1.0
+[grain172]
+crystallite 1
+(constituent)   phase 1 texture 172 fraction 1.0
+[grain173]
+crystallite 1
+(constituent)   phase 1 texture 173 fraction 1.0
+[grain174]
+crystallite 1
+(constituent)   phase 1 texture 174 fraction 1.0
+[grain175]
+crystallite 1
+(constituent)   phase 1 texture 175 fraction 1.0
+[grain176]
+crystallite 1
+(constituent)   phase 1 texture 176 fraction 1.0
+[grain177]
+crystallite 1
+(constituent)   phase 1 texture 177 fraction 1.0
+[grain178]
+crystallite 1
+(constituent)   phase 1 texture 178 fraction 1.0
+[grain179]
+crystallite 1
+(constituent)   phase 1 texture 179 fraction 1.0
+[grain180]
+crystallite 1
+(constituent)   phase 1 texture 180 fraction 1.0
+[grain181]
+crystallite 1
+(constituent)   phase 1 texture 181 fraction 1.0
+[grain182]
+crystallite 1
+(constituent)   phase 1 texture 182 fraction 1.0
+[grain183]
+crystallite 1
+(constituent)   phase 1 texture 183 fraction 1.0
+[grain184]
+crystallite 1
+(constituent)   phase 1 texture 184 fraction 1.0
+[grain185]
+crystallite 1
+(constituent)   phase 1 texture 185 fraction 1.0
+[grain186]
+crystallite 1
+(constituent)   phase 1 texture 186 fraction 1.0
+[grain187]
+crystallite 1
+(constituent)   phase 1 texture 187 fraction 1.0
+[grain188]
+crystallite 1
+(constituent)   phase 1 texture 188 fraction 1.0
+[grain189]
+crystallite 1
+(constituent)   phase 1 texture 189 fraction 1.0
+[grain190]
+crystallite 1
+(constituent)   phase 1 texture 190 fraction 1.0
+[grain191]
+crystallite 1
+(constituent)   phase 1 texture 191 fraction 1.0
+[grain192]
+crystallite 1
+(constituent)   phase 1 texture 192 fraction 1.0
+[grain193]
+crystallite 1
+(constituent)   phase 1 texture 193 fraction 1.0
+[grain194]
+crystallite 1
+(constituent)   phase 1 texture 194 fraction 1.0
+[grain195]
+crystallite 1
+(constituent)   phase 1 texture 195 fraction 1.0
+[grain196]
+crystallite 1
+(constituent)   phase 1 texture 196 fraction 1.0
+[grain197]
+crystallite 1
+(constituent)   phase 1 texture 197 fraction 1.0
+[grain198]
+crystallite 1
+(constituent)   phase 1 texture 198 fraction 1.0
+[grain199]
+crystallite 1
+(constituent)   phase 1 texture 199 fraction 1.0
+[grain200]
+crystallite 1
+(constituent)   phase 1 texture 200 fraction 1.0
+[grain201]
+crystallite 1
+(constituent)   phase 1 texture 201 fraction 1.0
+[grain202]
+crystallite 1
+(constituent)   phase 1 texture 202 fraction 1.0
+[grain203]
+crystallite 1
+(constituent)   phase 1 texture 203 fraction 1.0
+[grain204]
+crystallite 1
+(constituent)   phase 1 texture 204 fraction 1.0
+[grain205]
+crystallite 1
+(constituent)   phase 1 texture 205 fraction 1.0
+[grain206]
+crystallite 1
+(constituent)   phase 1 texture 206 fraction 1.0
+[grain207]
+crystallite 1
+(constituent)   phase 1 texture 207 fraction 1.0
+[grain208]
+crystallite 1
+(constituent)   phase 1 texture 208 fraction 1.0
+[grain209]
+crystallite 1
+(constituent)   phase 1 texture 209 fraction 1.0
+[grain210]
+crystallite 1
+(constituent)   phase 1 texture 210 fraction 1.0
+[grain211]
+crystallite 1
+(constituent)   phase 1 texture 211 fraction 1.0
+[grain212]
+crystallite 1
+(constituent)   phase 1 texture 212 fraction 1.0
+[grain213]
+crystallite 1
+(constituent)   phase 1 texture 213 fraction 1.0
+[grain214]
+crystallite 1
+(constituent)   phase 1 texture 214 fraction 1.0
+[grain215]
+crystallite 1
+(constituent)   phase 1 texture 215 fraction 1.0
+[grain216]
+crystallite 1
+(constituent)   phase 1 texture 216 fraction 1.0
+[grain217]
+crystallite 1
+(constituent)   phase 1 texture 217 fraction 1.0
+[grain218]
+crystallite 1
+(constituent)   phase 1 texture 218 fraction 1.0
+[grain219]
+crystallite 1
+(constituent)   phase 1 texture 219 fraction 1.0
+[grain220]
+crystallite 1
+(constituent)   phase 1 texture 220 fraction 1.0
+[grain221]
+crystallite 1
+(constituent)   phase 1 texture 221 fraction 1.0
+[grain222]
+crystallite 1
+(constituent)   phase 1 texture 222 fraction 1.0
+[grain223]
+crystallite 1
+(constituent)   phase 1 texture 223 fraction 1.0
+[grain224]
+crystallite 1
+(constituent)   phase 1 texture 224 fraction 1.0
+[grain225]
+crystallite 1
+(constituent)   phase 1 texture 225 fraction 1.0
+[grain226]
+crystallite 1
+(constituent)   phase 1 texture 226 fraction 1.0
+[grain227]
+crystallite 1
+(constituent)   phase 1 texture 227 fraction 1.0
+[grain228]
+crystallite 1
+(constituent)   phase 1 texture 228 fraction 1.0
+[grain229]
+crystallite 1
+(constituent)   phase 1 texture 229 fraction 1.0
+[grain230]
+crystallite 1
+(constituent)   phase 1 texture 230 fraction 1.0
+[grain231]
+crystallite 1
+(constituent)   phase 1 texture 231 fraction 1.0
+[grain232]
+crystallite 1
+(constituent)   phase 1 texture 232 fraction 1.0
+[grain233]
+crystallite 1
+(constituent)   phase 1 texture 233 fraction 1.0
+[grain234]
+crystallite 1
+(constituent)   phase 1 texture 234 fraction 1.0
+[grain235]
+crystallite 1
+(constituent)   phase 1 texture 235 fraction 1.0
+[grain236]
+crystallite 1
+(constituent)   phase 1 texture 236 fraction 1.0
+[grain237]
+crystallite 1
+(constituent)   phase 1 texture 237 fraction 1.0
+[grain238]
+crystallite 1
+(constituent)   phase 1 texture 238 fraction 1.0
+[grain239]
+crystallite 1
+(constituent)   phase 1 texture 239 fraction 1.0
+[grain240]
+crystallite 1
+(constituent)   phase 1 texture 240 fraction 1.0
+[grain241]
+crystallite 1
+(constituent)   phase 1 texture 241 fraction 1.0
+[grain242]
+crystallite 1
+(constituent)   phase 1 texture 242 fraction 1.0
+[grain243]
+crystallite 1
+(constituent)   phase 1 texture 243 fraction 1.0
+[grain244]
+crystallite 1
+(constituent)   phase 1 texture 244 fraction 1.0
+[grain245]
+crystallite 1
+(constituent)   phase 1 texture 245 fraction 1.0
+[grain246]
+crystallite 1
+(constituent)   phase 1 texture 246 fraction 1.0
+[grain247]
+crystallite 1
+(constituent)   phase 1 texture 247 fraction 1.0
+[grain248]
+crystallite 1
+(constituent)   phase 1 texture 248 fraction 1.0
+[grain249]
+crystallite 1
+(constituent)   phase 1 texture 249 fraction 1.0
+[grain250]
+crystallite 1
+(constituent)   phase 1 texture 250 fraction 1.0
+[grain251]
+crystallite 1
+(constituent)   phase 1 texture 251 fraction 1.0
+[grain252]
+crystallite 1
+(constituent)   phase 1 texture 252 fraction 1.0
+[grain253]
+crystallite 1
+(constituent)   phase 1 texture 253 fraction 1.0
+[grain254]
+crystallite 1
+(constituent)   phase 1 texture 254 fraction 1.0
+[grain255]
+crystallite 1
+(constituent)   phase 1 texture 255 fraction 1.0
+[grain256]
+crystallite 1
+(constituent)   phase 1 texture 256 fraction 1.0
+[grain257]
+crystallite 1
+(constituent)   phase 1 texture 257 fraction 1.0
+[grain258]
+crystallite 1
+(constituent)   phase 1 texture 258 fraction 1.0
+[grain259]
+crystallite 1
+(constituent)   phase 1 texture 259 fraction 1.0
+[grain260]
+crystallite 1
+(constituent)   phase 1 texture 260 fraction 1.0
+[grain261]
+crystallite 1
+(constituent)   phase 1 texture 261 fraction 1.0
+[grain262]
+crystallite 1
+(constituent)   phase 1 texture 262 fraction 1.0
+[grain263]
+crystallite 1
+(constituent)   phase 1 texture 263 fraction 1.0
+[grain264]
+crystallite 1
+(constituent)   phase 1 texture 264 fraction 1.0
+[grain265]
+crystallite 1
+(constituent)   phase 1 texture 265 fraction 1.0
+[grain266]
+crystallite 1
+(constituent)   phase 1 texture 266 fraction 1.0
+[grain267]
+crystallite 1
+(constituent)   phase 1 texture 267 fraction 1.0
+[grain268]
+crystallite 1
+(constituent)   phase 1 texture 268 fraction 1.0
+[grain269]
+crystallite 1
+(constituent)   phase 1 texture 269 fraction 1.0
+[grain270]
+crystallite 1
+(constituent)   phase 1 texture 270 fraction 1.0
+[grain271]
+crystallite 1
+(constituent)   phase 1 texture 271 fraction 1.0
+[grain272]
+crystallite 1
+(constituent)   phase 1 texture 272 fraction 1.0
+[grain273]
+crystallite 1
+(constituent)   phase 1 texture 273 fraction 1.0
+[grain274]
+crystallite 1
+(constituent)   phase 1 texture 274 fraction 1.0
+[grain275]
+crystallite 1
+(constituent)   phase 1 texture 275 fraction 1.0
+[grain276]
+crystallite 1
+(constituent)   phase 1 texture 276 fraction 1.0
+[grain277]
+crystallite 1
+(constituent)   phase 1 texture 277 fraction 1.0
+[grain278]
+crystallite 1
+(constituent)   phase 1 texture 278 fraction 1.0
+[grain279]
+crystallite 1
+(constituent)   phase 1 texture 279 fraction 1.0
+[grain280]
+crystallite 1
+(constituent)   phase 1 texture 280 fraction 1.0
+[grain281]
+crystallite 1
+(constituent)   phase 1 texture 281 fraction 1.0
+[grain282]
+crystallite 1
+(constituent)   phase 1 texture 282 fraction 1.0
+[grain283]
+crystallite 1
+(constituent)   phase 1 texture 283 fraction 1.0
+[grain284]
+crystallite 1
+(constituent)   phase 1 texture 284 fraction 1.0
+[grain285]
+crystallite 1
+(constituent)   phase 1 texture 285 fraction 1.0
+[grain286]
+crystallite 1
+(constituent)   phase 1 texture 286 fraction 1.0
+[grain287]
+crystallite 1
+(constituent)   phase 1 texture 287 fraction 1.0
+[grain288]
+crystallite 1
+(constituent)   phase 1 texture 288 fraction 1.0
+[grain289]
+crystallite 1
+(constituent)   phase 1 texture 289 fraction 1.0
+[grain290]
+crystallite 1
+(constituent)   phase 1 texture 290 fraction 1.0
+[grain291]
+crystallite 1
+(constituent)   phase 1 texture 291 fraction 1.0
+[grain292]
+crystallite 1
+(constituent)   phase 1 texture 292 fraction 1.0
+[grain293]
+crystallite 1
+(constituent)   phase 1 texture 293 fraction 1.0
+[grain294]
+crystallite 1
+(constituent)   phase 1 texture 294 fraction 1.0
+[grain295]
+crystallite 1
+(constituent)   phase 1 texture 295 fraction 1.0
+[grain296]
+crystallite 1
+(constituent)   phase 1 texture 296 fraction 1.0
+[grain297]
+crystallite 1
+(constituent)   phase 1 texture 297 fraction 1.0
+[grain298]
+crystallite 1
+(constituent)   phase 1 texture 298 fraction 1.0
+[grain299]
+crystallite 1
+(constituent)   phase 1 texture 299 fraction 1.0
+[grain300]
+crystallite 1
+(constituent)   phase 1 texture 300 fraction 1.0
+[grain301]
+crystallite 1
+(constituent)   phase 1 texture 301 fraction 1.0
+[grain302]
+crystallite 1
+(constituent)   phase 1 texture 302 fraction 1.0
+[grain303]
+crystallite 1
+(constituent)   phase 1 texture 303 fraction 1.0
+[grain304]
+crystallite 1
+(constituent)   phase 1 texture 304 fraction 1.0
+[grain305]
+crystallite 1
+(constituent)   phase 1 texture 305 fraction 1.0
+[grain306]
+crystallite 1
+(constituent)   phase 1 texture 306 fraction 1.0
+[grain307]
+crystallite 1
+(constituent)   phase 1 texture 307 fraction 1.0
+[grain308]
+crystallite 1
+(constituent)   phase 1 texture 308 fraction 1.0
+[grain309]
+crystallite 1
+(constituent)   phase 1 texture 309 fraction 1.0
+[grain310]
+crystallite 1
+(constituent)   phase 1 texture 310 fraction 1.0
+[grain311]
+crystallite 1
+(constituent)   phase 1 texture 311 fraction 1.0
+[grain312]
+crystallite 1
+(constituent)   phase 1 texture 312 fraction 1.0
+[grain313]
+crystallite 1
+(constituent)   phase 1 texture 313 fraction 1.0
+[grain314]
+crystallite 1
+(constituent)   phase 1 texture 314 fraction 1.0
+[grain315]
+crystallite 1
+(constituent)   phase 1 texture 315 fraction 1.0
+[grain316]
+crystallite 1
+(constituent)   phase 1 texture 316 fraction 1.0
+[grain317]
+crystallite 1
+(constituent)   phase 1 texture 317 fraction 1.0
+[grain318]
+crystallite 1
+(constituent)   phase 1 texture 318 fraction 1.0
+[grain319]
+crystallite 1
+(constituent)   phase 1 texture 319 fraction 1.0
+[grain320]
+crystallite 1
+(constituent)   phase 1 texture 320 fraction 1.0
+[grain321]
+crystallite 1
+(constituent)   phase 1 texture 321 fraction 1.0
+[grain322]
+crystallite 1
+(constituent)   phase 1 texture 322 fraction 1.0
+[grain323]
+crystallite 1
+(constituent)   phase 1 texture 323 fraction 1.0
+[grain324]
+crystallite 1
+(constituent)   phase 1 texture 324 fraction 1.0
+[grain325]
+crystallite 1
+(constituent)   phase 1 texture 325 fraction 1.0
+[grain326]
+crystallite 1
+(constituent)   phase 1 texture 326 fraction 1.0
+[grain327]
+crystallite 1
+(constituent)   phase 1 texture 327 fraction 1.0
+[grain328]
+crystallite 1
+(constituent)   phase 1 texture 328 fraction 1.0
+[grain329]
+crystallite 1
+(constituent)   phase 1 texture 329 fraction 1.0
+[grain330]
+crystallite 1
+(constituent)   phase 1 texture 330 fraction 1.0
+[grain331]
+crystallite 1
+(constituent)   phase 1 texture 331 fraction 1.0
+[grain332]
+crystallite 1
+(constituent)   phase 1 texture 332 fraction 1.0
+[grain333]
+crystallite 1
+(constituent)   phase 1 texture 333 fraction 1.0
+[grain334]
+crystallite 1
+(constituent)   phase 1 texture 334 fraction 1.0
+[grain335]
+crystallite 1
+(constituent)   phase 1 texture 335 fraction 1.0
+[grain336]
+crystallite 1
+(constituent)   phase 1 texture 336 fraction 1.0
+[grain337]
+crystallite 1
+(constituent)   phase 1 texture 337 fraction 1.0
+[grain338]
+crystallite 1
+(constituent)   phase 1 texture 338 fraction 1.0
+[grain339]
+crystallite 1
+(constituent)   phase 1 texture 339 fraction 1.0
+[grain340]
+crystallite 1
+(constituent)   phase 1 texture 340 fraction 1.0
+[grain341]
+crystallite 1
+(constituent)   phase 1 texture 341 fraction 1.0
+[grain342]
+crystallite 1
+(constituent)   phase 1 texture 342 fraction 1.0
+[grain343]
+crystallite 1
+(constituent)   phase 1 texture 343 fraction 1.0
+[grain344]
+crystallite 1
+(constituent)   phase 1 texture 344 fraction 1.0
+[grain345]
+crystallite 1
+(constituent)   phase 1 texture 345 fraction 1.0
+[grain346]
+crystallite 1
+(constituent)   phase 1 texture 346 fraction 1.0
+[grain347]
+crystallite 1
+(constituent)   phase 1 texture 347 fraction 1.0
+[grain348]
+crystallite 1
+(constituent)   phase 1 texture 348 fraction 1.0
+[grain349]
+crystallite 1
+(constituent)   phase 1 texture 349 fraction 1.0
+[grain350]
+crystallite 1
+(constituent)   phase 1 texture 350 fraction 1.0
+[grain351]
+crystallite 1
+(constituent)   phase 1 texture 351 fraction 1.0
+[grain352]
+crystallite 1
+(constituent)   phase 1 texture 352 fraction 1.0
+[grain353]
+crystallite 1
+(constituent)   phase 1 texture 353 fraction 1.0
+[grain354]
+crystallite 1
+(constituent)   phase 1 texture 354 fraction 1.0
+[grain355]
+crystallite 1
+(constituent)   phase 1 texture 355 fraction 1.0
+[grain356]
+crystallite 1
+(constituent)   phase 1 texture 356 fraction 1.0
+[grain357]
+crystallite 1
+(constituent)   phase 1 texture 357 fraction 1.0
+[grain358]
+crystallite 1
+(constituent)   phase 1 texture 358 fraction 1.0
+[grain359]
+crystallite 1
+(constituent)   phase 1 texture 359 fraction 1.0
+[grain360]
+crystallite 1
+(constituent)   phase 1 texture 360 fraction 1.0
+[grain361]
+crystallite 1
+(constituent)   phase 1 texture 361 fraction 1.0
+[grain362]
+crystallite 1
+(constituent)   phase 1 texture 362 fraction 1.0
+[grain363]
+crystallite 1
+(constituent)   phase 1 texture 363 fraction 1.0
+[grain364]
+crystallite 1
+(constituent)   phase 1 texture 364 fraction 1.0
+[grain365]
+crystallite 1
+(constituent)   phase 1 texture 365 fraction 1.0
+[grain366]
+crystallite 1
+(constituent)   phase 1 texture 366 fraction 1.0
+[grain367]
+crystallite 1
+(constituent)   phase 1 texture 367 fraction 1.0
+[grain368]
+crystallite 1
+(constituent)   phase 1 texture 368 fraction 1.0
+[grain369]
+crystallite 1
+(constituent)   phase 1 texture 369 fraction 1.0
+[grain370]
+crystallite 1
+(constituent)   phase 1 texture 370 fraction 1.0
+[grain371]
+crystallite 1
+(constituent)   phase 1 texture 371 fraction 1.0
+[grain372]
+crystallite 1
+(constituent)   phase 1 texture 372 fraction 1.0
+[grain373]
+crystallite 1
+(constituent)   phase 1 texture 373 fraction 1.0
+[grain374]
+crystallite 1
+(constituent)   phase 1 texture 374 fraction 1.0
+[grain375]
+crystallite 1
+(constituent)   phase 1 texture 375 fraction 1.0
+[grain376]
+crystallite 1
+(constituent)   phase 1 texture 376 fraction 1.0
+[grain377]
+crystallite 1
+(constituent)   phase 1 texture 377 fraction 1.0
+[grain378]
+crystallite 1
+(constituent)   phase 1 texture 378 fraction 1.0
+[grain379]
+crystallite 1
+(constituent)   phase 1 texture 379 fraction 1.0
+[grain380]
+crystallite 1
+(constituent)   phase 1 texture 380 fraction 1.0
+[grain381]
+crystallite 1
+(constituent)   phase 1 texture 381 fraction 1.0
+[grain382]
+crystallite 1
+(constituent)   phase 1 texture 382 fraction 1.0
+[grain383]
+crystallite 1
+(constituent)   phase 1 texture 383 fraction 1.0
+[grain384]
+crystallite 1
+(constituent)   phase 1 texture 384 fraction 1.0
+[grain385]
+crystallite 1
+(constituent)   phase 1 texture 385 fraction 1.0
+[grain386]
+crystallite 1
+(constituent)   phase 1 texture 386 fraction 1.0
+[grain387]
+crystallite 1
+(constituent)   phase 1 texture 387 fraction 1.0
+[grain388]
+crystallite 1
+(constituent)   phase 1 texture 388 fraction 1.0
+[grain389]
+crystallite 1
+(constituent)   phase 1 texture 389 fraction 1.0
+[grain390]
+crystallite 1
+(constituent)   phase 1 texture 390 fraction 1.0
+[grain391]
+crystallite 1
+(constituent)   phase 1 texture 391 fraction 1.0
+[grain392]
+crystallite 1
+(constituent)   phase 1 texture 392 fraction 1.0
+[grain393]
+crystallite 1
+(constituent)   phase 1 texture 393 fraction 1.0
+[grain394]
+crystallite 1
+(constituent)   phase 1 texture 394 fraction 1.0
+[grain395]
+crystallite 1
+(constituent)   phase 1 texture 395 fraction 1.0
+[grain396]
+crystallite 1
+(constituent)   phase 1 texture 396 fraction 1.0
+[grain397]
+crystallite 1
+(constituent)   phase 1 texture 397 fraction 1.0
+[grain398]
+crystallite 1
+(constituent)   phase 1 texture 398 fraction 1.0
+[grain399]
+crystallite 1
+(constituent)   phase 1 texture 399 fraction 1.0
+[grain400]
+crystallite 1
+(constituent)   phase 1 texture 400 fraction 1.0
+[grain401]
+crystallite 1
+(constituent)   phase 1 texture 401 fraction 1.0
+[grain402]
+crystallite 1
+(constituent)   phase 1 texture 402 fraction 1.0
+[grain403]
+crystallite 1
+(constituent)   phase 1 texture 403 fraction 1.0
+[grain404]
+crystallite 1
+(constituent)   phase 1 texture 404 fraction 1.0
+[grain405]
+crystallite 1
+(constituent)   phase 1 texture 405 fraction 1.0
+[grain406]
+crystallite 1
+(constituent)   phase 1 texture 406 fraction 1.0
+[grain407]
+crystallite 1
+(constituent)   phase 1 texture 407 fraction 1.0
+[grain408]
+crystallite 1
+(constituent)   phase 1 texture 408 fraction 1.0
+[grain409]
+crystallite 1
+(constituent)   phase 1 texture 409 fraction 1.0
+[grain410]
+crystallite 1
+(constituent)   phase 1 texture 410 fraction 1.0
+[grain411]
+crystallite 1
+(constituent)   phase 1 texture 411 fraction 1.0
+[grain412]
+crystallite 1
+(constituent)   phase 1 texture 412 fraction 1.0
+[grain413]
+crystallite 1
+(constituent)   phase 1 texture 413 fraction 1.0
+[grain414]
+crystallite 1
+(constituent)   phase 1 texture 414 fraction 1.0
+[grain415]
+crystallite 1
+(constituent)   phase 1 texture 415 fraction 1.0
+[grain416]
+crystallite 1
+(constituent)   phase 1 texture 416 fraction 1.0
+[grain417]
+crystallite 1
+(constituent)   phase 1 texture 417 fraction 1.0
+[grain418]
+crystallite 1
+(constituent)   phase 1 texture 418 fraction 1.0
+[grain419]
+crystallite 1
+(constituent)   phase 1 texture 419 fraction 1.0
+[grain420]
+crystallite 1
+(constituent)   phase 1 texture 420 fraction 1.0
+[grain421]
+crystallite 1
+(constituent)   phase 1 texture 421 fraction 1.0
+[grain422]
+crystallite 1
+(constituent)   phase 1 texture 422 fraction 1.0
+[grain423]
+crystallite 1
+(constituent)   phase 1 texture 423 fraction 1.0
+[grain424]
+crystallite 1
+(constituent)   phase 1 texture 424 fraction 1.0
+[grain425]
+crystallite 1
+(constituent)   phase 1 texture 425 fraction 1.0
+[grain426]
+crystallite 1
+(constituent)   phase 1 texture 426 fraction 1.0
+[grain427]
+crystallite 1
+(constituent)   phase 1 texture 427 fraction 1.0
+[grain428]
+crystallite 1
+(constituent)   phase 1 texture 428 fraction 1.0
+[grain429]
+crystallite 1
+(constituent)   phase 1 texture 429 fraction 1.0
+[grain430]
+crystallite 1
+(constituent)   phase 1 texture 430 fraction 1.0
+[grain431]
+crystallite 1
+(constituent)   phase 1 texture 431 fraction 1.0
+[grain432]
+crystallite 1
+(constituent)   phase 1 texture 432 fraction 1.0
+[grain433]
+crystallite 1
+(constituent)   phase 1 texture 433 fraction 1.0
+[grain434]
+crystallite 1
+(constituent)   phase 1 texture 434 fraction 1.0
+[grain435]
+crystallite 1
+(constituent)   phase 1 texture 435 fraction 1.0
+[grain436]
+crystallite 1
+(constituent)   phase 1 texture 436 fraction 1.0
+[grain437]
+crystallite 1
+(constituent)   phase 1 texture 437 fraction 1.0
+[grain438]
+crystallite 1
+(constituent)   phase 1 texture 438 fraction 1.0
+[grain439]
+crystallite 1
+(constituent)   phase 1 texture 439 fraction 1.0
+[grain440]
+crystallite 1
+(constituent)   phase 1 texture 440 fraction 1.0
+[grain441]
+crystallite 1
+(constituent)   phase 1 texture 441 fraction 1.0
+[grain442]
+crystallite 1
+(constituent)   phase 1 texture 442 fraction 1.0
+[grain443]
+crystallite 1
+(constituent)   phase 1 texture 443 fraction 1.0
+[grain444]
+crystallite 1
+(constituent)   phase 1 texture 444 fraction 1.0
+[grain445]
+crystallite 1
+(constituent)   phase 1 texture 445 fraction 1.0
+[grain446]
+crystallite 1
+(constituent)   phase 1 texture 446 fraction 1.0
+[grain447]
+crystallite 1
+(constituent)   phase 1 texture 447 fraction 1.0
+[grain448]
+crystallite 1
+(constituent)   phase 1 texture 448 fraction 1.0
+[grain449]
+crystallite 1
+(constituent)   phase 1 texture 449 fraction 1.0
+[grain450]
+crystallite 1
+(constituent)   phase 1 texture 450 fraction 1.0
+[grain451]
+crystallite 1
+(constituent)   phase 1 texture 451 fraction 1.0
+[grain452]
+crystallite 1
+(constituent)   phase 1 texture 452 fraction 1.0
+[grain453]
+crystallite 1
+(constituent)   phase 1 texture 453 fraction 1.0
+[grain454]
+crystallite 1
+(constituent)   phase 1 texture 454 fraction 1.0
+[grain455]
+crystallite 1
+(constituent)   phase 1 texture 455 fraction 1.0
+[grain456]
+crystallite 1
+(constituent)   phase 1 texture 456 fraction 1.0
+[grain457]
+crystallite 1
+(constituent)   phase 1 texture 457 fraction 1.0
+[grain458]
+crystallite 1
+(constituent)   phase 1 texture 458 fraction 1.0
+[grain459]
+crystallite 1
+(constituent)   phase 1 texture 459 fraction 1.0
+[grain460]
+crystallite 1
+(constituent)   phase 1 texture 460 fraction 1.0
+[grain461]
+crystallite 1
+(constituent)   phase 1 texture 461 fraction 1.0
+[grain462]
+crystallite 1
+(constituent)   phase 1 texture 462 fraction 1.0
+[grain463]
+crystallite 1
+(constituent)   phase 1 texture 463 fraction 1.0
+[grain464]
+crystallite 1
+(constituent)   phase 1 texture 464 fraction 1.0
+[grain465]
+crystallite 1
+(constituent)   phase 1 texture 465 fraction 1.0
+[grain466]
+crystallite 1
+(constituent)   phase 1 texture 466 fraction 1.0
+[grain467]
+crystallite 1
+(constituent)   phase 1 texture 467 fraction 1.0
+[grain468]
+crystallite 1
+(constituent)   phase 1 texture 468 fraction 1.0
+[grain469]
+crystallite 1
+(constituent)   phase 1 texture 469 fraction 1.0
+[grain470]
+crystallite 1
+(constituent)   phase 1 texture 470 fraction 1.0
+[grain471]
+crystallite 1
+(constituent)   phase 1 texture 471 fraction 1.0
+[grain472]
+crystallite 1
+(constituent)   phase 1 texture 472 fraction 1.0
+[grain473]
+crystallite 1
+(constituent)   phase 1 texture 473 fraction 1.0
+[grain474]
+crystallite 1
+(constituent)   phase 1 texture 474 fraction 1.0
+[grain475]
+crystallite 1
+(constituent)   phase 1 texture 475 fraction 1.0
+[grain476]
+crystallite 1
+(constituent)   phase 1 texture 476 fraction 1.0
+[grain477]
+crystallite 1
+(constituent)   phase 1 texture 477 fraction 1.0
+[grain478]
+crystallite 1
+(constituent)   phase 1 texture 478 fraction 1.0
+[grain479]
+crystallite 1
+(constituent)   phase 1 texture 479 fraction 1.0
+[grain480]
+crystallite 1
+(constituent)   phase 1 texture 480 fraction 1.0
+[grain481]
+crystallite 1
+(constituent)   phase 1 texture 481 fraction 1.0
+[grain482]
+crystallite 1
+(constituent)   phase 1 texture 482 fraction 1.0
+[grain483]
+crystallite 1
+(constituent)   phase 1 texture 483 fraction 1.0
+[grain484]
+crystallite 1
+(constituent)   phase 1 texture 484 fraction 1.0
+[grain485]
+crystallite 1
+(constituent)   phase 1 texture 485 fraction 1.0
+[grain486]
+crystallite 1
+(constituent)   phase 1 texture 486 fraction 1.0
+[grain487]
+crystallite 1
+(constituent)   phase 1 texture 487 fraction 1.0
+[grain488]
+crystallite 1
+(constituent)   phase 1 texture 488 fraction 1.0
+[grain489]
+crystallite 1
+(constituent)   phase 1 texture 489 fraction 1.0
+[grain490]
+crystallite 1
+(constituent)   phase 1 texture 490 fraction 1.0
+[grain491]
+crystallite 1
+(constituent)   phase 1 texture 491 fraction 1.0
+[grain492]
+crystallite 1
+(constituent)   phase 1 texture 492 fraction 1.0
+[grain493]
+crystallite 1
+(constituent)   phase 1 texture 493 fraction 1.0
+[grain494]
+crystallite 1
+(constituent)   phase 1 texture 494 fraction 1.0
+[grain495]
+crystallite 1
+(constituent)   phase 1 texture 495 fraction 1.0
+[grain496]
+crystallite 1
+(constituent)   phase 1 texture 496 fraction 1.0
+[grain497]
+crystallite 1
+(constituent)   phase 1 texture 497 fraction 1.0
+[grain498]
+crystallite 1
+(constituent)   phase 1 texture 498 fraction 1.0
+[grain499]
+crystallite 1
+(constituent)   phase 1 texture 499 fraction 1.0
+[grain500]
+crystallite 1
+(constituent)   phase 1 texture 500 fraction 1.0
+[grain501]
+crystallite 1
+(constituent)   phase 1 texture 501 fraction 1.0
+[grain502]
+crystallite 1
+(constituent)   phase 1 texture 502 fraction 1.0
+[grain503]
+crystallite 1
+(constituent)   phase 1 texture 503 fraction 1.0
+[grain504]
+crystallite 1
+(constituent)   phase 1 texture 504 fraction 1.0
+[grain505]
+crystallite 1
+(constituent)   phase 1 texture 505 fraction 1.0
+[grain506]
+crystallite 1
+(constituent)   phase 1 texture 506 fraction 1.0
+[grain507]
+crystallite 1
+(constituent)   phase 1 texture 507 fraction 1.0
+[grain508]
+crystallite 1
+(constituent)   phase 1 texture 508 fraction 1.0
+[grain509]
+crystallite 1
+(constituent)   phase 1 texture 509 fraction 1.0
+[grain510]
+crystallite 1
+(constituent)   phase 1 texture 510 fraction 1.0
+[grain511]
+crystallite 1
+(constituent)   phase 1 texture 511 fraction 1.0
+[grain512]
+crystallite 1
+(constituent)   phase 1 texture 512 fraction 1.0
+[grain513]
+crystallite 1
+(constituent)   phase 1 texture 513 fraction 1.0
+[grain514]
+crystallite 1
+(constituent)   phase 1 texture 514 fraction 1.0
+[grain515]
+crystallite 1
+(constituent)   phase 1 texture 515 fraction 1.0
+[grain516]
+crystallite 1
+(constituent)   phase 1 texture 516 fraction 1.0
+[grain517]
+crystallite 1
+(constituent)   phase 1 texture 517 fraction 1.0
+[grain518]
+crystallite 1
+(constituent)   phase 1 texture 518 fraction 1.0
+[grain519]
+crystallite 1
+(constituent)   phase 1 texture 519 fraction 1.0
+[grain520]
+crystallite 1
+(constituent)   phase 1 texture 520 fraction 1.0
+[grain521]
+crystallite 1
+(constituent)   phase 1 texture 521 fraction 1.0
+[grain522]
+crystallite 1
+(constituent)   phase 1 texture 522 fraction 1.0
+[grain523]
+crystallite 1
+(constituent)   phase 1 texture 523 fraction 1.0
+[grain524]
+crystallite 1
+(constituent)   phase 1 texture 524 fraction 1.0
+[grain525]
+crystallite 1
+(constituent)   phase 1 texture 525 fraction 1.0
+[grain526]
+crystallite 1
+(constituent)   phase 1 texture 526 fraction 1.0
+[grain527]
+crystallite 1
+(constituent)   phase 1 texture 527 fraction 1.0
+[grain528]
+crystallite 1
+(constituent)   phase 1 texture 528 fraction 1.0
+[grain529]
+crystallite 1
+(constituent)   phase 1 texture 529 fraction 1.0
+[grain530]
+crystallite 1
+(constituent)   phase 1 texture 530 fraction 1.0
+[grain531]
+crystallite 1
+(constituent)   phase 1 texture 531 fraction 1.0
+[grain532]
+crystallite 1
+(constituent)   phase 1 texture 532 fraction 1.0
+[grain533]
+crystallite 1
+(constituent)   phase 1 texture 533 fraction 1.0
+[grain534]
+crystallite 1
+(constituent)   phase 1 texture 534 fraction 1.0
+[grain535]
+crystallite 1
+(constituent)   phase 1 texture 535 fraction 1.0
+[grain536]
+crystallite 1
+(constituent)   phase 1 texture 536 fraction 1.0
+[grain537]
+crystallite 1
+(constituent)   phase 1 texture 537 fraction 1.0
+[grain538]
+crystallite 1
+(constituent)   phase 1 texture 538 fraction 1.0
+[grain539]
+crystallite 1
+(constituent)   phase 1 texture 539 fraction 1.0
+[grain540]
+crystallite 1
+(constituent)   phase 1 texture 540 fraction 1.0
+[grain541]
+crystallite 1
+(constituent)   phase 1 texture 541 fraction 1.0
+[grain542]
+crystallite 1
+(constituent)   phase 1 texture 542 fraction 1.0
+[grain543]
+crystallite 1
+(constituent)   phase 1 texture 543 fraction 1.0
+[grain544]
+crystallite 1
+(constituent)   phase 1 texture 544 fraction 1.0
+[grain545]
+crystallite 1
+(constituent)   phase 1 texture 545 fraction 1.0
+[grain546]
+crystallite 1
+(constituent)   phase 1 texture 546 fraction 1.0
+[grain547]
+crystallite 1
+(constituent)   phase 1 texture 547 fraction 1.0
+[grain548]
+crystallite 1
+(constituent)   phase 1 texture 548 fraction 1.0
+[grain549]
+crystallite 1
+(constituent)   phase 1 texture 549 fraction 1.0
+[grain550]
+crystallite 1
+(constituent)   phase 1 texture 550 fraction 1.0
+[grain551]
+crystallite 1
+(constituent)   phase 1 texture 551 fraction 1.0
+[grain552]
+crystallite 1
+(constituent)   phase 1 texture 552 fraction 1.0
+[grain553]
+crystallite 1
+(constituent)   phase 1 texture 553 fraction 1.0
+[grain554]
+crystallite 1
+(constituent)   phase 1 texture 554 fraction 1.0
+[grain555]
+crystallite 1
+(constituent)   phase 1 texture 555 fraction 1.0
+[grain556]
+crystallite 1
+(constituent)   phase 1 texture 556 fraction 1.0
+[grain557]
+crystallite 1
+(constituent)   phase 1 texture 557 fraction 1.0
+[grain558]
+crystallite 1
+(constituent)   phase 1 texture 558 fraction 1.0
+[grain559]
+crystallite 1
+(constituent)   phase 1 texture 559 fraction 1.0
+[grain560]
+crystallite 1
+(constituent)   phase 1 texture 560 fraction 1.0
+[grain561]
+crystallite 1
+(constituent)   phase 1 texture 561 fraction 1.0
+[grain562]
+crystallite 1
+(constituent)   phase 1 texture 562 fraction 1.0
+[grain563]
+crystallite 1
+(constituent)   phase 1 texture 563 fraction 1.0
+[grain564]
+crystallite 1
+(constituent)   phase 1 texture 564 fraction 1.0
+[grain565]
+crystallite 1
+(constituent)   phase 1 texture 565 fraction 1.0
+[grain566]
+crystallite 1
+(constituent)   phase 1 texture 566 fraction 1.0
+[grain567]
+crystallite 1
+(constituent)   phase 1 texture 567 fraction 1.0
+[grain568]
+crystallite 1
+(constituent)   phase 1 texture 568 fraction 1.0
+[grain569]
+crystallite 1
+(constituent)   phase 1 texture 569 fraction 1.0
+[grain570]
+crystallite 1
+(constituent)   phase 1 texture 570 fraction 1.0
+[grain571]
+crystallite 1
+(constituent)   phase 1 texture 571 fraction 1.0
+[grain572]
+crystallite 1
+(constituent)   phase 1 texture 572 fraction 1.0
+[grain573]
+crystallite 1
+(constituent)   phase 1 texture 573 fraction 1.0
+[grain574]
+crystallite 1
+(constituent)   phase 1 texture 574 fraction 1.0
+[grain575]
+crystallite 1
+(constituent)   phase 1 texture 575 fraction 1.0
+[grain576]
+crystallite 1
+(constituent)   phase 1 texture 576 fraction 1.0
+[grain577]
+crystallite 1
+(constituent)   phase 1 texture 577 fraction 1.0
+[grain578]
+crystallite 1
+(constituent)   phase 1 texture 578 fraction 1.0
+[grain579]
+crystallite 1
+(constituent)   phase 1 texture 579 fraction 1.0
+[grain580]
+crystallite 1
+(constituent)   phase 1 texture 580 fraction 1.0
+[grain581]
+crystallite 1
+(constituent)   phase 1 texture 581 fraction 1.0
+[grain582]
+crystallite 1
+(constituent)   phase 1 texture 582 fraction 1.0
+[grain583]
+crystallite 1
+(constituent)   phase 1 texture 583 fraction 1.0
+[grain584]
+crystallite 1
+(constituent)   phase 1 texture 584 fraction 1.0
+[grain585]
+crystallite 1
+(constituent)   phase 1 texture 585 fraction 1.0
+[grain586]
+crystallite 1
+(constituent)   phase 1 texture 586 fraction 1.0
+[grain587]
+crystallite 1
+(constituent)   phase 1 texture 587 fraction 1.0
+[grain588]
+crystallite 1
+(constituent)   phase 1 texture 588 fraction 1.0
+[grain589]
+crystallite 1
+(constituent)   phase 1 texture 589 fraction 1.0
+[grain590]
+crystallite 1
+(constituent)   phase 1 texture 590 fraction 1.0
+[grain591]
+crystallite 1
+(constituent)   phase 1 texture 591 fraction 1.0
+[grain592]
+crystallite 1
+(constituent)   phase 1 texture 592 fraction 1.0
+[grain593]
+crystallite 1
+(constituent)   phase 1 texture 593 fraction 1.0
+[grain594]
+crystallite 1
+(constituent)   phase 1 texture 594 fraction 1.0
+[grain595]
+crystallite 1
+(constituent)   phase 1 texture 595 fraction 1.0
+[grain596]
+crystallite 1
+(constituent)   phase 1 texture 596 fraction 1.0
+[grain597]
+crystallite 1
+(constituent)   phase 1 texture 597 fraction 1.0
+[grain598]
+crystallite 1
+(constituent)   phase 1 texture 598 fraction 1.0
+[grain599]
+crystallite 1
+(constituent)   phase 1 texture 599 fraction 1.0
+[grain600]
+crystallite 1
+(constituent)   phase 1 texture 600 fraction 1.0
+[grain601]
+crystallite 1
+(constituent)   phase 1 texture 601 fraction 1.0
+[grain602]
+crystallite 1
+(constituent)   phase 1 texture 602 fraction 1.0
+[grain603]
+crystallite 1
+(constituent)   phase 1 texture 603 fraction 1.0
+[grain604]
+crystallite 1
+(constituent)   phase 1 texture 604 fraction 1.0
+[grain605]
+crystallite 1
+(constituent)   phase 1 texture 605 fraction 1.0
+[grain606]
+crystallite 1
+(constituent)   phase 1 texture 606 fraction 1.0
