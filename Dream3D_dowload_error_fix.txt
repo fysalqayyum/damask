@@ -1,0 +1,29 @@
+
+
+Download DREAM3D 6.5.121 on Linux Mint 22.1 Cinnamon 
+
+ERROR: 
+
+The plugin did not load with the following error
+
+Cannot load library /home/user/Softwares/DREA3D-6.5.121-Linux-x86_64/Plugins/libOrinetationAnalysisUi.guiplugin: (libpng12.so.0: cannot open shared object file: No such file or directory)
+
+Possible causes include missing libraries that plugin depends on.
+
+Comments:
+
+DREAM3D 6.5.x requires libpng12.so.0, a deprecated library removed from modern Linux distributions like Linux Mint 22.1 (based on Ubuntu 22.04). The plugin libOrientationAnalysisUi.guiplugin fails to load because the system cannot locate this legacy dependency
+
+Solution:
+
+sudo apt purge libpng12-0:i386 
+# libpng12-0 needs to be downloaded manually *
+mkdir -p ~/libpng12-extracted
+dpkg-deb -x ./libpng12-0_*.deb ~/libpng12-extracted
+sudo cp ~/libpng12-extracted/usr/lib/x86_64-linux-gnu/libpng12.so.0 /usr/lib/x86_64-linux-gnu/
+sudo ldconfig
+ls /usr/lib/x86_64-linux-gnu/libpng12.so.0  # Confirm file exists
+ldconfig -p | grep libpng12 
+
+*Download the correct version of the libpng12-0 package for your system architecture. For most modern systems (including Linux Mint 22.1), this means the amd64 (64-bit) version, not the i386 (32-bit) version.
+Link:  http://ppa.launchpad.net/linuxuprising/libpng12/ubuntu/pool/main/libp/libpng/libpng12-0_1.2.54-1ubuntu1.1+1~ppa0~eoan_amd64.deb
